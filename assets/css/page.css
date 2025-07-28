@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/* page.css*/
+.boardpage { clear:both; width:100%; height:auto; text-align:center; overflow:hidden; }
+.boardpage strong { color:#333; font-weight:bold; }
+.boardpage img { vertical-align:middle; }
+.boardpage span { display:inline-block; vertical-align:top;}
+.boardpage .bpagenum {display:inline-block; width:auto; height:auto; min-height:15px; padding-right:4px; font-family:Tahoma; font-size:12px; color:#666; text-align:center; overflow:hidden; vertical-align:middle;}
+.boardpage .bpagenum a { display:inline-block; margin:2px 0; padding:0 1px 0 4px; min-width:12px; line-height:15px; border-left:1px solid #ddd;  text-align:center; }
+.boardpage .bpagenum span { display:inline-block; margin:2px 0; padding:0 1px 0 4px; min-width:12px; line-height:15px; border-left:1px solid #ddd;  text-align:center; }
+.boardpage .bpagenum a:first-child { border-left:none; padding-left:1px;}
+.boardpage .bpagenum a:link, 
+.boardpage .bpagenum a:visited, 
+.boardpage .bpagenum a:active { color:#666; text-decoration:none; }
+.boardpage .bpagenum a:focus, 
+.boardpage .bpagenum a:hover { color:#000; text-decoration:underline; }
+.boardpage .bpagenum a.pageselect { font-weight:bold; color:#000; text-decoration:underline;}
+.boardpage .bpagenum a.pageselect:link, 
+.boardpage .bpagenum a.pageselect:visited, 
+.boardpage .bpagenum a.pageselect:active, 
+.boardpage .bpagenum a.pageselect:focus,
+.boardpage .bpagenum a.pageselect:hover{ font-weight:bold; color:#000;  text-decoration:underline;}
+.boardpage .bpagenum span.pageselect { font-weight:bold; color:#000; text-decoration:underline;}
+.boardpage .bpagenum span.pageselect:link, 
+.boardpage .bpagenum span.pageselect:visited, 
+.boardpage .bpagenum span.pageselect:active, 
+.boardpage .bpagenum span.pageselect:focus,
+.boardpage .bpagenum span.pageselect:hover{ font-weight:bold; color:#000;  text-decoration:underline;}
+.boardpage .bpageimg { width:18px; height:18px; padding:0 1px;  margin-top:2px; overflow:hidden; }
+.boardpage .bpageimg a { border:none; padding:0; margin:0 1px;}
+.boardpage .bpageimg img { border:none; }
+.boardpage .bpageimgnolink { width:18px; height:18px; padding:0 1px; margin-top:2px; overflow:hidden; }
+.boardpage .bpageimgnolink img {margin-top:-18px; vertical-align:top;}
+
+

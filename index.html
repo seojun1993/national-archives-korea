@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="국가기록원 정부간행물 검색 서비스 - 국가, 지방자치단체 및 공공기관의 간행물을 검색할 수 있습니다.">
+    <meta name="keywords" content="정부간행물, 국가기록원, 공공기관, 간행물검색, 정부문서">
+    <meta name="author" content="국가기록원">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.archives.go.kr/">
+    <meta property="og:title" content="정부간행물 - 국가기록원">
+    <meta property="og:description" content="국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.">
+    <meta property="og:image" content="assets/images/logo_footer.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.archives.go.kr/">
+    <meta property="twitter:title" content="정부간행물 - 국가기록원">
+    <meta property="twitter:description" content="국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.">
+    <meta property="twitter:image" content="assets/images/logo_footer.png">
+
+    <title>정부간행물 - 국가기록원</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/publishment.css">
+    <script src="assets/js/jquery-1.9.1.min.js"></script>
+    <script src="assets/js/publishment.js"></script>
+    
+    <!-- 구조화된 데이터 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "GovernmentOrganization",
+        "name": "국가기록원",
+        "url": "https://www.archives.go.kr/",
+        "description": "국가기록원 정부간행물 검색 서비스",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "KR",
+            "addressRegion": "대전광역시",
+            "addressLocality": "서구",
+            "streetAddress": "청사로 189, 2동"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+82-2-720-2721",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- 스킵 네비게이션 -->
+    <div id="skip-navigation">
+        <a href="#main-content">본문 바로가기</a>
+        <a href="#main-menu">메인메뉴 바로가기</a>
+        <a href="#search-form">검색 바로가기</a>
+    </div>
+
+    <div id="wrap">
+        <header role="banner">
+            <div class="header_logo">
+                <h1>
+                    <a href="/" aria-label="정부간행물 홈으로 이동">정부간행물</a>
+                </h1>
+            </div>
+            <nav id="main-menu" role="navigation" aria-label="메인 네비게이션">
+                <ul>
+                    <li><a href="#" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
+                    <li><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
+                    <li><a href="#" aria-label="발행기관별 검색 페이지로 이동">발행기관별 검색</a></li>
+                    <li><a href="#" aria-label="유형별 검색 페이지로 이동">유형별 검색</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+        <main id="main-content" role="main">
+            <section aria-labelledby="main-title">
+                <div class="section_top">
+                    <div>
+                        <h2 id="main-title">정부간행물</h2>
+                        <p>국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.</p>
+                    </div>
+                    <div class="search_box" role="search">
+                        <form id="search-form" action="#" method="get">
+                            <div class="search">
+                                <label for="search-input" class="sr-only">검색어 입력</label>
+                                <input 
+                                    type="text" 
+                                    id="search-input"
+                                    name="q"
+                                    placeholder="검색어를 입력해주세요."
+                                    aria-describedby="search-description"
+                                    required
+                                >
+                            </div>
+                            <button type="submit" aria-label="검색 실행">검색</button>
+                        </form>
+                        <button type="button" aria-label="상세검색 팝업 열기">상세검색</button>
+                        <p id="search-description" class="sr-only">정부간행물을 검색할 수 있습니다. 검색어를 입력하고 검색 버튼을 누르거나 엔터키를 누르세요.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="related-orgs-title">
+                <div class="section_bottom"> 
+                    <div class="main_link">
+                        <h3 id="related-orgs-title">관련기관</h3>
+                        <ul role="list">
+                            <li>
+                                <a href="https://www.nl.go.kr" target="_blank" rel="noopener noreferrer" aria-label="국립중앙도서관 새창으로 열기">
+                                    <span class="sr-only">국립중앙도서관</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.nanet.go.kr" target="_blank" rel="noopener noreferrer" aria-label="국회도서관 새창으로 열기">
+                                    <span class="sr-only">국회도서관</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://scienceon.kisti.re.kr" target="_blank" rel="noopener noreferrer" aria-label="ScienceOn 새창으로 열기">
+                                    <span class="sr-only">ScienceOn</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer role="contentinfo">
+            <div class="footerlogo">
+                <img src="assets/images/logo_footer.png" alt="국가기록원 로고" width="200" height="60">
+            </div>
+            <address class="footerinfo">
+                <p>
+                    <strong>주소:</strong> (우) 35208 대전광역시 서구 청사로 189, 2동(국가기록원)
+                </p>
+                <p>
+                    <strong>전화:</strong> 서울 02-720-2721 / 성남 031-750-2008,2002 / 대전 042-481-6300 / 부산 051-550-8023 / 광주 062-975-5791
+                </p>
+                <p>
+                    <small>Copyright(c) National Archives of Korea all rights reserved.</small>
+                </p>
+            </address>
+            <a href="#wrap" class="gotop" aria-label="페이지 상단으로 이동">위로가기</a>
+        </footer>
+    </div>
+    
+    <!-- 스크린리더 전용 텍스트 스타일 -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        #skip-navigation {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            z-index: 1000;
+        }
+        
+        #skip-navigation:focus {
+            top: 0;
+        }
+        
+        #skip-navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        #skip-navigation a:focus {
+            outline: 2px solid #fff;
+        }
+    </style>
+</body>
+</html>

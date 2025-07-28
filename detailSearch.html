@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="국가기록원 정부간행물 검색 서비스 - 국가, 지방자치단체 및 공공기관의 간행물을 검색할 수 있습니다.">
+    <meta name="keywords" content="정부간행물, 국가기록원, 공공기관, 간행물검색, 정부문서">
+    <meta name="author" content="국가기록원">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.archives.go.kr/">
+    <meta property="og:title" content="정부간행물 - 국가기록원">
+    <meta property="og:description" content="국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.">
+    <meta property="og:image" content="assets/images/logo_footer.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.archives.go.kr/">
+    <meta property="twitter:title" content="정부간행물 - 국가기록원">
+    <meta property="twitter:description" content="국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.">
+    <meta property="twitter:image" content="assets/images/logo_footer.png">
+
+    <title>정부간행물 - 국가기록원</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/publishment.css">
+    <script src="assets/js/jquery-1.9.1.min.js"></script>
+    <script src="assets/js/publishment.js"></script>
+
+    <!-- 구조화된 데이터 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "GovernmentOrganization",
+        "name": "국가기록원",
+        "url": "https://www.archives.go.kr/",
+        "description": "국가기록원 정부간행물 검색 서비스",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "KR",
+            "addressRegion": "대전광역시",
+            "addressLocality": "서구",
+            "streetAddress": "청사로 189, 2동"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+82-2-720-2721",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- 스킵 네비게이션 -->
+    <div id="skip-navigation">
+        <a href="#main-content">본문 바로가기</a>
+        <a href="#main-menu">메인메뉴 바로가기</a>
+        <a href="#search-form">검색 바로가기</a>
+    </div>
+
+    <div id="wrap">
+        <header role="banner">
+            <div class="header_logo">
+                <h1>
+                    <a href="/" aria-label="정부간행물 홈으로 이동">정부간행물</a>
+                </h1>
+            </div>
+            <nav id="main-menu" role="navigation" aria-label="메인 네비게이션">
+                <ul>
+                    <li>
+                        <a href="#" aria-label="간행물 검색 페이지로 이동" aria-current="page">간행물</a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="상세검색 페이지로 이동">상세검색</a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="발행기관별 검색 페이지로 이동">발행기관별 검색</a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="유형별 검색 페이지로 이동">유형별 검색</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="main-content" role="main">
+            <section aria-labelledby="page-title">
+                <div class="section_top">
+                    <nav class="subnavibar" aria-label="페이지 경로">
+                        <ul>
+                            <li>
+                                <a href="#">home</a>
+                            </li>
+                            <li>
+                                <a href="#" aria-current="page">간행물</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div>
+                        <h2 id="page-title">상세검색</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="intro-title">
+                <div class="section_bottom">
+                    <div id="detailsearch" style="display: block;">
+                        <div class="title">
+                            <h2>상세검색</h2>
+                            <a href="#detailsearch" title="상세검색 닫기" class="close">닫기</a>
+                        </div>
+                        <fieldset>
+                            <legend>상세검색 폼</legend>
+                            <form name="detailSearchForm" id="detailSearchForm" action="/next/publishment/listSearchResult.do" method="post" onsubmit="return submitChk('','detailSearchForm');">
+                                <table summary="상세검색을 위한 검색입력폼입니다. 키워드, 간행물 발간등록번호, 발행기관, 발행연도, 간행물 유형, 공개구분, 원문서비스, 관리번호를 지정하여 검색하실 수 있습니다.">
+                                    <caption>상세검색 입력폼</caption>
+                                    <colgroup>
+                                        <col style="width:18%;">
+                                        <col style="width:82%;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">키워드</th>
+                                            <td>
+                                                <label class="noview" for="searchType">구분값1</label>
+                                                <select name="searchType" id="searchType">
+                                                    <option value="TITLE" selected="">제목</option>
+                                                    <option value="AUTHOR">저자</option>
+                                                    <option value="CONTENTS">내용(목차)</option>
+                                                </select>
+                                                <label class="noview" for="searchText">키워드검색어1</label>
+                                                <input type="text" id="searchText" name="searchText" style="width:340px;" value="">
+                                                <label class="noview" for="searchOperator">추가값 선택</label>
+                                                <select id="searchOperator" name="searchOperator">
+                                                    <option value="AND">AND(모두  포함)</option>
+                                                    <option value="OR">OR(또는)</option>
+                                                    <option value="NOT">NOT(제외)</option>
+                                                </select>
+                                                <br>
+                                                <label class="noview" for="searchType2">구분값2</label>
+                                                <select id="searchType2" name="searchType2">
+                                                    <option value="TITLE">제목</option>
+                                                    <option value="AUTHOR" selected="">저자</option>
+                                                    <option value="CONTENTS">내용(목차)</option>
+                                                </select>
+                                                <label class="noview" for="searchText2">키워드검색어2</label>
+                                                <input type="text" id="searchText2" name="searchText2" style="width:340px;" value="">
+                                                <label class="noview" for="searchOperator2">추가값 선택</label>
+                                                <select id="searchOperator2" name="searchOperator2">
+                                                    <option value="AND">AND(모두  포함)</option>
+                                                    <option value="OR">OR(또는)</option>
+                                                    <option value="NOT">NOT(제외)</option>
+                                                </select>
+                                                <br>
+                                                <label class="noview" for="searchType3">구분값3</label>
+                                                <select id="searchType3" name="searchType3">
+                                                    <option value="TITLE">제목</option>
+                                                    <option value="AUTHOR">저자</option>
+                                                    <option value="CONTENTS" selected="">내용(목차)</option>
+                                                </select>
+                                                <label class="noview" for="searchText3">키워드검색어3</label>
+                                                <input type="text" id="searchText3" name="searchText3" style="width:340px;" value="">
+                                                <label class="noview" for="searchOperator3">추가값 선택</label>
+                                                <select id="searchOperator3">
+                                                    <option value="AND">AND(모두  포함)</option>
+                                                    <option value="OR">OR(또는)</option>
+                                                    <option value="NOT">NOT(제외)</option>
+                                                </select>
+                                                <br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <label for="orgName">발행기관</label>
+                                            </th>
+                                            <td>
+                                                <input type="hidden" name="orgId" id="orgId" value="">
+                                                <input type="text" id="orgName" name="orgName" style="width:270px;" value="">
+                                                <a href="http://www.archives.go.kr/next/search/organCodeSearch.do?directUrl=plct" title="새창열림" onclick="win_pop(this.href,'600','600'); return false;" class="btnorgan">발행기관 검색</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">발행연도</th>
+                                            <td>
+                                                <label class="noview" for="sdate">발행연도 시작</label>
+                                                <label class="noview" for="edate">발행연도 끝</label>
+                                                <input type="text" id="sdate" name="sdate" onfocus="keyChk('sdate')" style="width:110px" value="">
+                                                &nbsp;~&nbsp;
+                                                <input type="text" id="edate" name="edate" onfocus="keyChk('edate')" style="width:110px" value="">
+                                                <span class="notice">예) 2015</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                간행물 유형
+                                                <br>
+                                                <a href="/next/publishment/styleInfo.do" onclick="win_pop(this.href,'600','600'); return false;" class="type">유형 자세히보기</a>
+                                            </th>
+                                            <td>
+                                                <ul>
+                                                    <li class="long">
+                                                        <input type="checkbox" id="styleCd00" name="styleCdArrAll" onclick="styleAllCheck(this.checked)" checked="">
+                                                        <label for="styleCd00">전체</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd1" name="styleCdArr" value="01" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd1">연감.백서류</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd2" name="styleCdArr" value="02" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd2">통계집</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd3" name="styleCdArr" value="03" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd3">업무편람</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd4" name="styleCdArr" value="04" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd4">법규집</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd5" name="styleCdArr" value="05" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd5">사업보고서</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd6" name="styleCdArr" value="06" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd6">연구조사보고서</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd7" name="styleCdArr" value="07" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd7">교육자료</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd8" name="styleCdArr" value="08" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd8">기관지</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd9" name="styleCdArr" value="09" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd9">회의자료</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd10" name="styleCdArr" value="10" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd10">목록류</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd11" name="styleCdArr" value="11" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd11">사료연혁집</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd12" name="styleCdArr" value="12" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd12">연설.강연집</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd13" name="styleCdArr" value="13" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd13">전시.도감.화보집</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd14" name="styleCdArr" value="20" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd14">기타 (유형 미표시 기록물 포함)</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="checkbox" id="styleCd15" name="styleCdArr" value="14" onclick="styleCheck(this.checked)">
+                                                        <label for="styleCd15">업무안내질의서</label>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">공개구분</th>
+                                            <td>
+                                                <input type="radio" id="all01" name="arch_isopen" value="" checked="">
+                                                <label for="all01">전체</label>
+                                                <input type="radio" id="open" name="arch_isopen" value="1">
+                                                <label for="open">공개</label>
+                                                <input type="radio" id="part" name="arch_isopen" value="2">
+                                                <label for="part">부분공개</label>
+                                                <input type="radio" id="close" name="arch_isopen" value="3">
+                                                <label for="close">비공개</label>
+                                                <span class="notice2">'공개/부분공개'에 한하여 '사본신청'이 가능합니다.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">원문서비스</th>
+                                            <td>
+                                                <input type="radio" id="all02" name="down_gbn" value="" checked="">
+                                                <label for="all02">전체</label>
+                                                <input type="radio" id="exsist" name="down_gbn" value="Y">
+                                                <label for="exsist">온라인 제공</label>
+                                                <input type="radio" id="nonexsist" name="down_gbn" value="N">
+                                                <label for="nonexsist">온라인 미제공</label>
+                                                <span class="notice2"> '온라인제공'에 한하여 '원문보기'가 가능합니다.</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">관리번호</th>
+                                            <td>
+                                                <label class="noview" for="mngno_start">관리번호 시작</label>
+                                                <label class="noview" for="mngno_end">관리번호 끝</label>
+                                                <input type="text" id="mngno_start" name="mngno_start" onkeyup="changeUpperCase('mngno_start');" style="width:110px" value="">
+                                                &nbsp;~&nbsp;
+                                                <input type="text" id="mngno_end" name="mngno_end" onkeyup="changeUpperCase('mngno_end');" style="width:110px" value="">
+                                                <span class="notice">예) CM00020005</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="downbtn">
+                                    <input type="submit" class="searchgo" value="검색하기">
+                                </div>
+                            </form>
+                        </fieldset>
+
+                        <div class="downbtn">
+                            <ul>
+                                <li>
+                                    <button type="reset" form="detailSearchForm" class="btn_reset">초기화</button>
+                                </li>
+                                <li>
+                                    <button type="submit" form="detailSearchForm" class="btn_search">검색하기</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer role="contentinfo">
+            <div class="footerlogo">
+                <img src="assets/images/logo_footer.png" alt="국가기록원 로고" width="200" height="60">
+            </div>
+            <address class="footerinfo">
+                <p>
+                    <strong>주소:</strong> (우) 35208 대전광역시 서구 청사로 189, 2동(국가기록원)
+                </p>
+                <p>
+                    <strong>전화:</strong> 서울 02-720-2721 / 성남 031-750-2008,2002 / 대전 042-481-6300 / 부산 051-550-8023 / 광주 062-975-5791
+                </p>
+                <p>
+                    <small>Copyright(c) National Archives of Korea all rights reserved.</small>
+                </p>
+            </address>
+        </footer>
+
+        <div class="top_btn">
+            <a href="#wrap" class="gotop" aria-label="페이지 상단으로 이동">TOP</a>
+        </div>
+    </div>
+
+    <!-- 스크린리더 전용 텍스트 스타일 -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        #skip-navigation {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            z-index: 1000;
+        }
+
+        #skip-navigation:focus {
+            top: 0;
+        }
+
+        #skip-navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        #skip-navigation a:focus {
+            outline: 2px solid #fff;
+        }
+    </style>
+</body>
+</html>
