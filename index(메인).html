@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="국가기록원 정부간행물 검색 서비스 - 국가, 지방자치단체 및 공공기관의 간행물을 검색할 수 있습니다.">
+    <meta name="keywords" content="정부간행물, 국가기록원, 공공기관, 간행물검색, 정부문서">
+    <meta name="author" content="국가기록원">
+    <meta name="robots" content="index, follow">
+    
+    <title>정부간행물 - 국가기록원</title>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <script src="assets/js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <!-- 스킵 네비게이션 -->
+    <div id="skip-navigation">
+        <a href="#main-content">본문 바로가기</a>
+        <a href="#main-menu">메인메뉴 바로가기</a>
+        <a href="#search-form">검색 바로가기</a>
+    </div>
+ 
+    <div class="wrap">
+        <header role="banner">
+          <div class="container">
+            <div class="header_logo">
+              <h1>
+                <a href="/" aria-label="정부간행물 홈으로 이동">
+                  <img src="images/logo_b.svg" alt="정부간행물 로고">
+                  <span class="sr-only">정부간행물</span>
+                </a>
+              </h1>
+            </div>
+            <nav id="main-menu" role="navigation" aria-label="메인 네비게이션">
+              <ul>
+                <li><a href="#" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
+                <li class="active"><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
+                <li class="has-submenu">
+                  <a href="#" aria-label="발행기관별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">발행기관별 검색</a>
+                  <ul class="submenu" aria-label="발행기관별 하위 메뉴">
+                    <li><a href="#">국가행정조직</a></li>
+                    <li><a href="#">자치행정조직</a></li>
+                    <li><a href="#">교육행정조직</a></li>
+                    <li><a href="#">입법조직</a></li>
+                    <li><a href="#">정부투자기관 및 기타</a></li>
+                    <li><a href="#">산하기관</a></li>
+                    <li><a href="#">위원회</a></li>
+                    <li><a href="#">초등학교</a></li>
+                    <li><a href="#">중학교</a></li>
+                    <li><a href="#">고등학교</a></li>
+                    <li><a href="#">고등교육기관</a></li>
+                    <li><a href="#">사법기관</a></li>
+                    <li><a href="#">헌법기관</a></li>
+                    <li><a href="#">미분류</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="#" aria-label="유형별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">유형별 검색</a>
+                  <ul class="submenu" aria-label="유형별 하위 메뉴">
+                    <li><a href="#">연감·백서류</a></li>
+                    <li><a href="#">통계집</a></li>
+                    <li><a href="#">업무편람</a></li>
+                    <li><a href="#">법규집</a></li>
+                    <li><a href="#">사업보고서</a></li>
+                    <li><a href="#">연구조사보고서</a></li>
+                    <li><a href="#">교육자료</a></li>
+                    <li><a href="#">기관지</a></li>
+                    <li><a href="#">회의자료</a></li>
+                    <li><a href="#">목록류</a></li>
+                    <li><a href="#">사료연혁집</a></li>
+                    <li><a href="#">연설·강연집</a></li>
+                    <li><a href="#">전시·도감·화보집</a></li>
+                    <li><a href="#">업무안내질의서</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+        </div>
+        </header>
+    
+        <main id="main-content" role="main">
+            <section aria-labelledby="main-title" class="main_section">
+              <div class="container">
+                <div class="section_top">
+                  <div class="title_section">
+                      <h2 id="main-title">정부간행물</h2>
+                      <p>국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.</p>
+                  </div>
+                  <div class="search_box" role="search">
+                      <form id="search-form" action="#" method="get">
+                          <div class="search">
+                              <label for="search-input" class="sr-only">검색어 입력</label>
+                              <input 
+                                  type="text" 
+                                  id="search-input"
+                                  name="q"
+                                  placeholder="검색어를 입력해주세요."
+                                  aria-describedby="search-description"
+                                  required
+                              >
+                              <button class="btn purple" type="submit" aria-label="상세 검색 실행">상세 검색</button>
+                          </div>
+                      </form>
+                      <button type="button" aria-label="상세검색 팝업 열기">상세검색</button>
+                      <p id="search-description" class="sr-only">정부간행물을 검색할 수 있습니다. 검색어를 입력하고 검색 버튼을 누르거나 엔터키를 누르세요.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="related-orgs-title" class="link_section">
+              <div class="container">
+                <div class="section_bottom"> 
+                    <div class="main_link">
+                        <h3 id="related-orgs-title">관련기관</h3>
+                        <ul role="list">
+                            <li>
+                                <a href="https://www.nl.go.kr" target="_blank" rel="noopener noreferrer" aria-label="국립중앙도서관 새창으로 열기">
+                                    <span class="sr-only">국립중앙도서관</span>
+                                    <img src="images/main_link_01.svg" alt="국립중앙도서관">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.nanet.go.kr" target="_blank" rel="noopener noreferrer" aria-label="국회도서관 새창으로 열기">
+                                    <span class="sr-only">국회도서관</span>
+                                    <img src="images/main_link_02.svg" alt="국회도서관">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://scienceon.kisti.re.kr" target="_blank" rel="noopener noreferrer" aria-label="ScienceOn 새창으로 열기">
+                                    <span class="sr-only">ScienceOn</span>
+                                    <img src="images/main_link_03.svg" alt="ScienceOn">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+            </section>
+        </main>
+
+        <footer role="contentinfo">
+          <div class="container">
+            <address class="footer_info">
+              <p>(우) 35208 대전광역시 서구 청사로 189, 2동(국가기록원)</p>
+              <p>서울 02-720-2721 / 성남 031-750-2008,2002 / 대전 042-481-6300 / 부산 051-550-8023 / 광주 062-975-5791</p>
+              <p>Copyright(c) National Archives of Korea all rights reserved.</p>
+            </address>
+            <div class="footer_logo">
+              <img src="images/footer_logo.svg" alt="국가기록원 로고" width="131" height="44">
+              <span class="sr-only">국가기록원 로고</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+</body>
+</html>

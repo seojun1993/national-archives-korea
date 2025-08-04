@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+body{
+    background-color: var(--color-background);
+}
+
+main{
+    width: 100%;
+}
+
+.main_section {
+    min-height: 690px;
+}
+
+.main_section::before {
+    background-image: url(../../images/main_bg.png);
+}
+
+.section_top{
+    padding-top: 8rem;
+    .title_section{
+        color: #fff;
+        h2{
+            font-size: 5.6rem;
+            font-weight: var(--font-weight-bold);
+        }
+    }
+    .search_box{
+        margin-top: 4rem;
+        .search{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            column-gap: 1.6rem;
+            input {
+                width: calc(100% - 110px - 1.6rem);
+                max-width: 640px;
+                height: 60px;
+                border-radius: 12px;
+                padding: 1.6rem 2rem;
+                box-sizing: border-box;
+                font-size: 1.6rem;
+            }
+            button {
+                width: 110px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 12px;
+            }
+        }
+    }
+}
+
+.link_section{
+    width: 100%;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .section_bottom{
+        width: 100%;
+        text-align: center;
+        .main_link{
+            h3{
+                font-size: 2rem;
+                font-weight: 700;
+                text-align: center;
+                padding-bottom: 3rem;
+            }
+            ul{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                column-gap: 3.2rem;
+                li{
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+                    width:200px;
+                    height: 80px;
+                    background-color: #F8FAFC;
+                    border:1px solid #DEE1EB;
+                    border-radius: 12px;
+                    a{
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
