@@ -87,7 +87,11 @@ header {
                                     border-radius: 4px;
                                     
                                     &:hover{
-                                        background-color: #F6F8FB;
+                                        color: var(--color-primary);
+                                    }
+                                }
+                                &.active{
+                                    a{
                                         color: var(--color-primary);
                                     }
                                 }
