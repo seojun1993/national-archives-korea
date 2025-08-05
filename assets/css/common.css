@@ -235,6 +235,13 @@ a:hover, a:active {
   box-sizing: border-box;
 }
 
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 2.4rem;
+  }
+}
+
 .btn_section{
   display: flex;
   justify-content: center;
@@ -244,6 +251,12 @@ a:hover, a:active {
   button{
     width: 100%;
     max-width: 120px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .btn_section{
+    margin-top: 1.6rem;
   }
 }
 
@@ -380,6 +393,10 @@ a:hover, a:active {
   width: 36px;
   height: 36px;
   background-image: url(../../images/close.svg);
+}
+
+.mobile_br{
+  display: none;
 }
 
 /*skip menu */
@@ -565,4 +582,70 @@ a:hover, a:active {
 
 #downfix .iconlink li:not(:last-child){
   border-right: 1px solid #fff;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .mobile_br{
+    display: block;
+  }
+
+  #downfix {
+    width: 100%;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+  }
+  
+  #downfix ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0;
+  }
+  #downfix ul li{
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6rem 0;
+  }
+  
+  #downfix ul li a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  #downfix a {
+    color: #fff;
+    font-size: var(--font-size15);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  #downfix .noticemsg {
+    width: 100%;
+    height: auto;
+    font-size: var(--font-size15);
+    padding: 1rem 1.6rem;
+    
+  }
+  
+  #downfix .iconlink li {
+    img{
+      width: 20px;
+      height: 20px;
+      margin-right: 1rem;
+    }
+  }
+  
+  #downfix .iconlink li:not(:last-child){
+    border-right: none;
+  }
 }

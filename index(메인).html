@@ -7,6 +7,7 @@
     <meta name="keywords" content="정부간행물, 국가기록원, 공공기관, 간행물검색, 정부문서">
     <meta name="author" content="국가기록원">
     <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>정부간행물 - 국가기록원</title>
     <link rel="stylesheet" href="assets/css/common.css">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/index.css">
 
     <script src="assets/js/jquery-1.9.1.min.js"></script>
+    <script src="assets/js/common.js"></script>
 </head>
 <body>
     <!-- 스킵 네비게이션 -->
@@ -29,15 +31,24 @@
             <div class="header_logo">
               <h1>
                 <a href="/" aria-label="정부간행물 홈으로 이동">
-                  <img src="images/logo_b.svg" alt="정부간행물 로고">
                   <span class="sr-only">정부간행물</span>
                 </a>
               </h1>
             </div>
+            <button class="toggle_btn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
             <nav id="main-menu" role="navigation" aria-label="메인 네비게이션">
+              <div class="mobile_top">
+                <img src="images/logo_b.svg" alt="정부간행물 로고">
+                <button class="close_btn" aria-label="메인메뉴 닫기"></button>
+              </div>
               <ul>
                 <li><a href="#" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
-                <li class="active"><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
+                <li><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
                 <li class="has-submenu">
                   <a href="#" aria-label="발행기관별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">발행기관별 검색</a>
                   <ul class="submenu" aria-label="발행기관별 하위 메뉴">
@@ -87,7 +98,7 @@
                 <div class="section_top">
                   <div class="title_section">
                       <h2 id="main-title">정부간행물</h2>
-                      <p>국가, 지방자치단체 및 공공기관의 간행물을 검색해보세요.</p>
+                      <p>국가, 지방자치단체 및<br class="mobile_br"/> 공공기관의 간행물을 검색해보세요.</p>
                   </div>
                   <div class="search_box" role="search">
                       <form id="search-form" action="#" method="get">
@@ -104,7 +115,6 @@
                               <button class="btn purple" type="submit" aria-label="상세 검색 실행">상세 검색</button>
                           </div>
                       </form>
-                      <button type="button" aria-label="상세검색 팝업 열기">상세검색</button>
                       <p id="search-description" class="sr-only">정부간행물을 검색할 수 있습니다. 검색어를 입력하고 검색 버튼을 누르거나 엔터키를 누르세요.</p>
                   </div>
                 </div>
@@ -117,22 +127,22 @@
                     <div class="main_link">
                         <h3 id="related-orgs-title">관련기관</h3>
                         <ul role="list">
-                            <li>
+                            <li class="nl">
                                 <a href="https://www.nl.go.kr" target="_blank" rel="noopener noreferrer" aria-label="국립중앙도서관 새창으로 열기">
                                     <span class="sr-only">국립중앙도서관</span>
-                                    <img src="images/main_link_01.svg" alt="국립중앙도서관">
+                                    <img src="images/main_link_01.png" alt="국립중앙도서관">
                                 </a>
                             </li>
-                            <li>
+                            <li class="nanet">
                                 <a href="https://www.nanet.go.kr" target="_blank" rel="noopener noreferrer" aria-label="국회도서관 새창으로 열기">
                                     <span class="sr-only">국회도서관</span>
-                                    <img src="images/main_link_02.svg" alt="국회도서관">
+                                    <img src="images/main_link_02.png" alt="국회도서관">
                                 </a>
                             </li>
-                            <li>
+                            <li class="scienceon">
                                 <a href="https://scienceon.kisti.re.kr" target="_blank" rel="noopener noreferrer" aria-label="ScienceOn 새창으로 열기">
                                     <span class="sr-only">ScienceOn</span>
-                                    <img src="images/main_link_03.svg" alt="ScienceOn">
+                                    <img src="images/main_link_03.png" alt="ScienceOn">
                                 </a>
                             </li>
                         </ul>

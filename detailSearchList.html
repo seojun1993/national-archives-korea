@@ -12,24 +12,35 @@
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/detail_searchlist.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <script src="assets/js/jquery-1.9.1.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/detail_search_list.js"></script>
+
 </head>
 <body>
     <div class="wrap">
         <header role="banner">
-          <div class="container">
+            <div class="container">
               <div class="header_logo">
                 <h1>
                   <a href="/" aria-label="정부간행물 홈으로 이동">
-                    <img src="images/logo_b.svg" alt="정부간행물 로고">
                     <span class="sr-only">정부간행물</span>
                   </a>
                 </h1>
               </div>
+              <button class="toggle_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+    
               <nav id="main-menu" role="navigation" aria-label="메인 네비게이션">
+                <div class="mobile_top">
+                  <img src="images/logo_b.svg" alt="정부간행물 로고">
+                  <button class="close_btn" aria-label="메인메뉴 닫기"></button>
+                </div>
                 <ul>
                   <li><a href="#" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
                   <li class="active"><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
@@ -74,7 +85,7 @@
                 </ul>
               </nav>
           </div>
-        </header>
+          </header>
     
         <main id="main-content" role="main">
             <section class="main_section">
