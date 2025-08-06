@@ -128,7 +128,8 @@ body{
 
 @media screen and (max-width: 1024px) {
     .publication_section{
-        padding-top: 3.2rem;
+        padding: 3.2rem 2.4rem 0;
+        box-sizing: border-box;
         .section_bottom{
             .publication_info{
                 h3{
@@ -231,8 +232,7 @@ body{
                     padding: 1.2rem 1.6rem;
                     text-align: left;
                     border-top: 1px dashed #E0E0E0;
-                }
-                
+                } 
             }
         }
     }

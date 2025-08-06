@@ -168,7 +168,8 @@ main{
 }
 
 .section_top{
-    padding-top: 10rem;
+    padding: 10rem 2.4rem 0;
+    box-sizing: border-box;
     .title_section{
         color: #fff;
         h2{

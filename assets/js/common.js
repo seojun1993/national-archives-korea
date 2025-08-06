@@ -52,9 +52,9 @@ $(document).ready(function(){
         }
     });
 
-    // 모바일 환경(1024px 이하)에서만 동작하도록 수정
+    // pc 환경(1024px 이상)에서만 동작하도록 수정
     $(window).scroll(function(){
-        if (window.innerWidth <= 1024) {
+        if (window.innerWidth >= 1024) {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 70) {
                 $("#downfix").css("bottom", "140px");
             } else {
@@ -77,4 +77,3 @@ $(document).ready(function(){
         $('#allCheck').prop('checked', total === checked);
     });
 });
-
