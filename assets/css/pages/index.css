@@ -13,7 +13,7 @@ main{
 }
 
 .main_section::before {
-    background-image: url(../../images/main_bg.png);
+    background-image: url(../../../images/main_bg.png);
 }
 
 .section_top{
@@ -27,6 +27,7 @@ main{
 .section_top .title_section h2{
     font-size: 5.6rem;
     font-weight: var(--font-weight-bold);
+    padding-bottom: 2.4rem;
 }
 
 .section_top .search_box{

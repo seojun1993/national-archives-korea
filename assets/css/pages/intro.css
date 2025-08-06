@@ -5,7 +5,7 @@ body{
 }
 
 .main_section::before {
-    background-image: url(../../images/intro_bg.png);
+    background-image: url(../../../images/intro_bg.png);
 }
 
 .publication_section{

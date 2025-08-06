@@ -267,6 +267,87 @@ a:hover, a:active {
   }
 }
 
+.bread_crumb{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2.4rem;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 100;
+}
+
+.bread_crumb .bread_crumb_list{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bread_crumb .bread_crumb_list li{
+  display: flex;
+  align-items: center;
+}
+
+.bread_crumb .bread_crumb_list li:not(:last-child)::after{
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-image: url(../../images/arrow_right_w.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bread_crumb .bread_crumb_list li:first-child a{
+  width: 20px;
+  height: 20px;
+  background-image: url(../../images/home.svg);
+}
+
+.bread_crumb a{
+  color: #fff;
+  font-size: var(--font-size15);
+  text-decoration: none;
+  height: 100%;
+  line-height: 1;
+}
+
+.bread_crumb a:hover{
+  color: var(--color-primary);
+}
+
+.bread_crumb li[aria-current="page"]{
+  color: #fff;
+  line-height: 1;
+  font-size: var(--font-size15);
+  font-weight: var(--font-weight-medium);
+}
+
+@media screen and (max-width: 1024px) {
+  .bread_crumb{
+    top: 20px
+  }
+  .bread_crumb .bread_crumb_list li:first-child a{
+    width: 20px;
+    height: 20px;
+  }
+
+  .bread_crumb .bread_crumb_list li:not(:last-child)::after{
+    width: 20px;
+    height: 20px;
+  }
+
+  .bread_crumb a{
+    font-size: var(--font-size13);
+  }
+
+  .bread_crumb li[aria-current="page"]{
+    font-size: var(--font-size13);
+  }
+}
+
 /* 라벨 공통 */
 .label {
   display:inline-flex;

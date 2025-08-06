@@ -160,7 +160,6 @@ main{
 .section_top .title_section h2{
     font-size: var(--font-size32);
     font-weight: var(--font-weight-semibold);
-    padding-bottom: 2.4rem;
     text-align: center;
     line-height: 1;
 }
