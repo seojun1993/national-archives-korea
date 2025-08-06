@@ -457,9 +457,24 @@
                                 }
                             }
                             .search_box_right{
-                                display: inline-block;
-                                margin-top: 1.6rem;
-                                margin-left: auto;
+                                width: 100%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-top: 1.2rem;
+                                .re_search{
+                                    display: flex;
+                                    align-items: center;
+                                    column-gap: 0.8rem;
+                                    margin-left: auto;
+                                }
+                                .mobile{
+                                    a{
+                                        display: flex;
+                                        align-items: center;
+                                        column-gap: 0.2rem;
+                                    }
+                                }
                             }
                         }
                     }

@@ -7,13 +7,12 @@
     <meta name="keywords" content="정부간행물, 국가기록원, 간행물소개, 간행물유형, 공공기관">
     <meta name="author" content="국가기록원">
     <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>간행물 소개 - 정부간행물 - 국가기록원</title>
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/detail_searchlist.css">
-    <link rel="stylesheet" href="assets/css/lib/swiper.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="assets/css/detail_search_list.css">
 
     <script src="assets/js/jquery-1.9.1.min.js"></script>
     <script src="assets/js/common.js"></script>
@@ -113,8 +112,22 @@
                                         <button type="button" class="btn purple">검색</button>
                                     </div>
                                     <div class="search_box_right">
-                                        <input type="checkbox" id="reCheck">
-                                        <label for="reCheck">결과내 재검색</label>
+                                        <div class="mobile">
+                                            <!-- 타입별 쓰시면 됩니다. -->
+                                            <!-- <a href="#;">
+                                                <img src="images/back.svg" alt="뒤로가기 아이콘">
+                                                발행기관 목록 보기
+                                            </a> -->
+
+                                            <button type="button" class="btn type">
+                                                <img src="images/icon_detail_type.svg" alt="유형 아이콘">
+                                                유형 자세히 보기
+                                            </button>
+                                        </div>
+                                        <div class="re_search">
+                                            <input type="checkbox" id="reCheck">
+                                            <label for="reCheck">결과내 재검색</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

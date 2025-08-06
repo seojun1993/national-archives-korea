@@ -38,7 +38,7 @@ const detailInfoClick = (e) => {
         target.classList.remove('active');
         if (detailInfo && detailInfo.classList.contains('detail_info')) {
             detailInfo.style.display = 'none';
-        }
+        }ㅁ
     } else {
         // 같은 아이템 내의 다른 버튼들 비활성화
         sameItemButtons.forEach(button => {

@@ -19,28 +19,33 @@
 </head>
 <body>
     <div class="wrap">
-        <div class="loading">
-            <div class="loader"></div>
-            <p>검색 중입니다.</p>
-        </div>
         <header role="banner">
-          <div class="container">
+            <div class="container">
               <div class="header_logo">
                 <h1>
                   <a href="/" aria-label="정부간행물 홈으로 이동">
-                    <img src="images/logo_b.svg" alt="정부간행물 로고">
                     <span class="sr-only">정부간행물</span>
                   </a>
                 </h1>
               </div>
+              <button class="toggle_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+    
               <nav id="main-menu" role="navigation" aria-label="메인 네비게이션">
+                <div class="mobile_top">
+                  <img src="images/logo_b.svg" alt="정부간행물 로고">
+                  <button class="close_btn" aria-label="메인메뉴 닫기"></button>
+                </div>
                 <ul>
                   <li><a href="#" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
-                  <li><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
-                  <li class="active has-submenu">
+                  <li class="active"><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
+                  <li class="has-submenu">
                     <a href="#" aria-label="발행기관별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">발행기관별 검색</a>
                     <ul class="submenu" aria-label="발행기관별 하위 메뉴">
-                      <li class="active"><a href="#">국가행정조직</a></li>
+                      <li><a href="#">국가행정조직</a></li>
                       <li><a href="#">자치행정조직</a></li>
                       <li><a href="#">교육행정조직</a></li>
                       <li><a href="#">입법조직</a></li>
@@ -79,7 +84,7 @@
               </nav>
           </div>
         </header>
-    
+        
         <main id="main-content" role="main">
             <section class="main_section">
               <div class="container">
