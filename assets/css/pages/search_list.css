@@ -748,7 +748,8 @@
     .detail_search_section .detail_info dl {
         display: flex;
         flex-wrap: wrap;
-        border-top: 1px solid #e0e0e0;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
     }
 
     .detail_search_section .detail_info dl dt {
@@ -758,7 +759,7 @@
         color: var(--color-subText1);
         background-color: #F6F8FB;
         border: 1px solid #e0e0e0;
-        border-top: none;
+        border-bottom: none;
     }
 
     .detail_search_section .detail_info dl dd {
@@ -766,7 +767,9 @@
         padding: 1.6rem;
         font-size: var(--font-size15);
         color: var(--color-subText2);
-        border-bottom: 1px solid #e0e0e0;
+        border: 1px solid #e0e0e0;
+        border-bottom: none;
+        border-left: none;
     }
 
     .detail_search_section .detail_info p {
