@@ -163,7 +163,7 @@ main{
     }
 
     .main_section::before {
-        background-image: url(../../images/main_bg.png);
+        background-image: url(../../../images/main_bg.png);
     }
 
     .section_top{
@@ -176,6 +176,7 @@ main{
     }
     
     .section_top .title_section h2{
+        padding-bottom: 0;
         font-size: var(--font-size32);
         font-weight: var(--font-weight-bold);
     }

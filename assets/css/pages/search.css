@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+.main_section::before {
+    background-image: url(../../../images/intro_bg.png);
+}
+
+/* 메인 섹션 */
+.detail_search_section{
+    padding: 4.8rem 2.4rem 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.detail_search_section .section_bottom{
+    width: 100%;
+}
+
+.detail_search_section .detail_search_info{
+    margin-bottom: 4.8rem;
+}
+
+/* 상세검색 테이블 */
+.detail_search_section .detail_search_table{
+    border-top: 1px solid #111;
+}
+
+.detail_search_section .detail_search_item{
+    display: flex;
+    border-bottom: 1px solid #B9B9B9;
+}
+
+.detail_search_section .detail_search_title{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #F7F8FD;
+}
+
+.detail_search_section .detail_search_title span{
+    display: block;
+    font-size: var(--font-size17);
+}
+
+.detail_search_section .detail_search_title button{
+    width: 100%;
+    font-size: var(--font-size15);
+}
+
+.detail_search_section .detail_search_content{
+    padding: 1.2rem;
+    width: calc(100% - 240px);
+}
+
+/* 키워드 검색 */
+.detail_search_section .keyword_search{
+    height: 46px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.detail_search_section .keyword_search select:nth-of-type(1){
+    width: 120px;
+}
+
+.detail_search_section .keyword_search select:nth-of-type(2){
+    width: 150px;
+}
+
+.detail_search_section .keyword_search input{
+    width: calc(100% - 150px - 120px - 2rem);
+}
+
+.detail_search_section .keyword_search:not(:first-of-type){
+    margin-top: 1rem;
+}
+
+/* 발행기관 검색 */
+.detail_search_section .publication_search{
+    height: 46px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.detail_search_section .publication_search input{
+    width: 500px;
+}
+
+.detail_search_section .publication_search button{
+    height: 100%;
+    font-size: var(--font-size15);
+}
+
+.detail_search_section .publication_search button img{
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
+}
+
+/* 연도 검색 */
+.detail_search_section .year_search{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.detail_search_section .year_search input{
+    width: 140px;
+}
+
+.detail_search_section .year_search span{
+    font-size: var(--font-size15);
+}
+
+/* 체크박스 유형 */
+.detail_search_section .type_checkbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1.6rem;
+}
+
+.detail_search_section .type_checkbox ul{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap:20px;
+    row-gap: 16px;
+}
+
+.detail_search_section .type_checkbox ul li{
+    display: inline-block;
+    min-width: calc(100% / 6 - 20px);
+    box-sizing: border-box;
+}
+
+.detail_search_section .type_checkbox ul li input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+}
+
+.detail_search_section .type_checkbox ul li label{
+    font-size: var(--font-size15);
+    padding-left:8px;
+}
+
+/* 라디오 유형 */
+.detail_search_section .type_radio{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.detail_search_section .type_radio input[type="radio"]{
+    width: 18px;
+    height: 18px;
+}
+
+.detail_search_section .type_radio label{
+    font-size: var(--font-size15);
+    padding:0 20px 0 8px;
+}
+
+.detail_search_section .type_radio span{
+    color: #D92D20;
+}
+
+/* 모바일 반응형 */
+@media screen and (max-width: 1024px) {
+    .detail_search_section{
+        padding-top: 4.8rem;
+        width: 100%;
+    }
+    
+    .detail_search_section .section_bottom{
+        width: 100%;
+    }
+    
+    .detail_search_section .detail_search_info{
+        margin-bottom: 4.8rem;
+    }
+    
+    .detail_search_section .detail_search_table{
+        border-top: none;
+    }
+    
+    .detail_search_section .detail_search_item{
+        display: block;
+        border-bottom: none;
+    }
+    
+    .detail_search_section .detail_search_title{
+        width: 100%;
+        display: block;
+        background-color: transparent;
+        margin-bottom: 0.8rem;
+    }
+    
+    .detail_search_section .detail_search_title span{
+        display: inline-block;
+        font-size: var(--font-size17);
+    }
+    
+    .detail_search_section .detail_search_title button{
+        display: inline-block;
+        width: auto;
+        font-size: var(--font-size15);
+        vertical-align: middle;
+    }
+    
+    .detail_search_section .detail_search_content{
+        padding: 0;
+        width: 100%;
+    }
+    
+    .detail_search_section .detail_search_item:not(:last-of-type){
+        margin-bottom: 2rem;
+    }
+    
+    .detail_search_section .keyword_search{
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 0.8rem;
+    }
+    
+    .detail_search_section .keyword_search select:nth-of-type(1){
+        width: calc(50% - 0.4rem);
+        order:1;
+    }
+    
+    .detail_search_section .keyword_search select:nth-of-type(2){
+        width: calc(50% - 0.4rem);
+        order:2;
+    }
+    
+    .detail_search_section .keyword_search input[type=text]{
+        width: 100%;
+        margin-top: 0.8rem;
+        order:3;
+    }
+    
+    .detail_search_section .keyword_search:not(:first-of-type){
+        margin-top: 0.8rem;
+    }
+
+    .detail_search_section .publication_search{
+        height: 38px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        column-gap: 1rem;
+    }
+    
+    .detail_search_section .publication_search input{
+        width: calc(100% - 130px - 0.8rem);
+    }
+    
+    .detail_search_section .publication_search button{
+        width: 130px;
+        height: 38px;
+        font-size: var(--font-size15);
+    }
+    
+    .detail_search_section .publication_search button img{
+        width: 16px;
+        height: 16px;
+        margin-right: 0.5rem;
+    }
+
+    .detail_search_section .year_search{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 1rem;
+    }
+    
+    .detail_search_section .year_search input{
+        width: calc(50% - 0.5rem - 10px);
+    }
+    
+    .detail_search_section .year_search .symbol{
+        display: inline-block;
+        width: 10px;
+    }
+    
+    .detail_search_section .year_search .example{
+        display: block;
+        margin-top: 0.5rem;
+        font-size: var(--font-size15);
+    }
+
+    .detail_search_section .type_checkbox{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        column-gap: 1rem;
+        padding: 0;
+    }
+    
+    .detail_search_section .type_checkbox ul{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap:0.8rem;
+        row-gap: 0.8rem;
+    }
+    
+    .detail_search_section .type_checkbox ul li{
+        display: inline-block;
+        width: calc(50% - 0.4rem);
+        min-width: auto;
+        box-sizing: border-box;
+    }
+    
+    .detail_search_section .type_checkbox ul li input[type="checkbox"]{
+        width: 18px;
+        height: 18px;
+    }
+    
+    .detail_search_section .type_checkbox ul li label{
+        font-size: var(--font-size15);
+        padding-left:8px;
+        word-break: keep-all;
+    }
+    
+    .detail_search_section .type_checkbox ul li:nth-child(15), 
+    .detail_search_section .type_checkbox ul li:nth-child(16){
+        width: 100%;
+    }
+
+    .detail_search_section .type_radio{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 0.8rem;
+    }
+    
+    .detail_search_section .type_radio input[type="radio"]{
+        display: none;
+    }
+    
+    .detail_search_section .type_radio label{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: 38px;
+        min-width: 75px;
+        font-size: var(--font-size15);
+        padding:0 8px;
+        border:1px solid #D4D6D9;
+        border-radius: 4px;
+        color:var(--color-subText2);
+    }
+
+    .detail_search_section .type_radio input[type="radio"]:checked + label{
+        border: 1px solid var(--color-primary);
+        color:var(--color-primary);
+    }
+    
+    .detail_search_section .type_radio span{
+        display: block;
+        color: #D92D20;
+        margin-top: 1.2rem;
+        font-size: var(--font-size15);
+    }
+}

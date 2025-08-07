@@ -7,7 +7,6 @@
     <meta name="keywords" content="정부간행물, 국가기록원, 간행물소개, 간행물유형, 공공기관">
     <meta name="author" content="국가기록원">
     <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>간행물 소개 - 정부간행물 - 국가기록원</title>
     <link rel="stylesheet" href="assets/css/common.css">
@@ -97,7 +96,12 @@
                 <nav class="bread_crumb" aria-label="페이지 경로">
                     <div class="container">
                         <ol class="bread_crumb_list">
-                            <li><a href="/"><img src="images/home.svg" alt="홈"></a></li>
+                            <li>
+                                <a href="/"> 
+                                    <img src="images/home.svg" alt="" aria-hidden="true">
+                                    <span class="sr-only">홈</span>
+                                </a>
+                            </li>
                             <li aria-current="page">간행물</li>
                         </ol>
                     </div>
@@ -130,13 +134,13 @@
                         </div>
                     </div>
 
-                    <div class="publication_table" role="table" aria-labelledby="publication-type-title">
+                    <div class="publication_table" role="table" aria-labelledby="publication-type-title" aria-describedby="publication-type-desc">
                       <h3 id="publication-type-title">간행물 유형</h3>
-
+                      <h4 class="sr-only">간행물 유형 테이블 헤더</h4>
                       <div class="publication_header" role="row">
-                        <span role="columnheader" aria-colindex="1">유형</span>
-                        <span role="columnheader" aria-colindex="2">내용</span>
-                        <span role="columnheader" aria-colindex="3">예시</span>
+                        <span role="columnheader">유형</span>
+                        <span role="columnheader">내용</span>
+                        <span role="columnheader">예시</span>
                       </div>
 
                       <div class="publication_body" role="rowgroup">
@@ -321,6 +325,7 @@
                           </div>
                       </div>
                     </div>
+                    <p id="publication-type-desc" class="sr-only">각 간행물 유형별로 유형명, 설명, 예시로 구성된 표입니다.</p>
                 </div>
               </div>
             </section>

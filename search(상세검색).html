@@ -7,16 +7,15 @@
     <meta name="keywords" content="정부간행물, 국가기록원, 간행물소개, 간행물유형, 공공기관">
     <meta name="author" content="국가기록원">
     <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>상세검색 - 정부간행물 - 국가기록원</title>
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/pages/detail_search.css">
+    <link rel="stylesheet" href="assets/css/pages/search.css">
 
     <script src="assets/js/lib/jquery-1.9.1.min.js"></script>
     <script src="assets/js/common.js"></script>
-    <script src="assets/js/pages/detail_search.js"></script>
+    <script src="assets/js/pages/search.js"></script>
 </head>
 <body>
     <!-- 스킵 네비게이션 -->
@@ -117,7 +116,7 @@
                 <div class="section_bottom"> 
                     <div class="detail_search_info">
                         <div class="content_section">
-                            <div id="detail-search-form" class="detail_search_table" role="table" aria-labelledby="detail-search-title">
+                            <form id="detail-search-form" class="detail_search_table" role="table" aria-labelledby="detail-search-title" method="post" action="#">
                                 <div class="detail_search_body" role="rowgroup">
                                     <div class="detail_search_item" role="row">
                                         <div class="detail_search_title" role="cell">
@@ -125,42 +124,42 @@
                                         </div>
                                         <div class="detail_search_content" role="cell">
                                             <div class="keyword_search">
-                                                <select name="" id="keyword-field-1" aria-label="첫 번째 키워드 검색 필드">
-                                                    <option value="">제목</option>
-                                                    <option value="">저자</option>
-                                                    <option value="">내용(목차)</option>
+                                                <select name="keyword_field_1" id="keyword-field-1" aria-label="첫 번째 키워드 검색 필드">
+                                                    <option value="title">제목</option>
+                                                    <option value="author">저자</option>
+                                                    <option value="content">내용(목차)</option>
                                                 </select>
-                                                <input type="text" placeholder="검색어를 입력해주세요" aria-label="첫 번째 키워드 검색어">
-                                                <select name="" id="keyword-operator-1" aria-label="첫 번째 키워드 연산자">
-                                                    <option value="" selected>AND(모두 포함)</option>
-                                                    <option value="">OR(또는)</option>
-                                                    <option value="">NOT(제외)</option>
-                                                </select>
-                                            </div>
-                                            <div class="keyword_search">
-                                                <select name="" id="keyword-field-2" aria-label="두 번째 키워드 검색 필드">
-                                                    <option value="">제목</option>
-                                                    <option value="">저자</option>
-                                                    <option value="">내용(목차)</option>
-                                                </select>
-                                                <input type="text" placeholder="검색어를 입력해주세요" aria-label="두 번째 키워드 검색어">
-                                                <select name="" id="keyword-operator-2" aria-label="두 번째 키워드 연산자">
-                                                    <option value="" selected>AND(모두 포함)</option>
-                                                    <option value="">OR(또는)</option>
-                                                    <option value="">NOT(제외)</option>
+                                                <input type="text" name="keyword_1" placeholder="검색어를 입력해주세요" aria-label="첫 번째 키워드 검색어">
+                                                <select name="keyword_operator_1" id="keyword-operator-1" aria-label="첫 번째 키워드 연산자">
+                                                    <option value="AND" selected>AND(모두 포함)</option>
+                                                    <option value="OR">OR(또는)</option>
+                                                    <option value="NOT">NOT(제외)</option>
                                                 </select>
                                             </div>
                                             <div class="keyword_search">
-                                                <select name="" id="keyword-field-3" aria-label="세 번째 키워드 검색 필드">
-                                                    <option value="">제목</option>
-                                                    <option value="">저자</option>
-                                                    <option value="">내용(목차)</option>
+                                                <select name="keyword_field_2" id="keyword-field-2" aria-label="두 번째 키워드 검색 필드">
+                                                    <option value="title">제목</option>
+                                                    <option value="author">저자</option>
+                                                    <option value="content">내용(목차)</option>
                                                 </select>
-                                                <input type="text" placeholder="검색어를 입력해주세요" aria-label="세 번째 키워드 검색어">
-                                                <select name="" id="keyword-operator-3" aria-label="세 번째 키워드 연산자">
-                                                    <option value="" selected>AND(모두 포함)</option>
-                                                    <option value="">OR(또는)</option>
-                                                    <option value="">NOT(제외)</option>
+                                                <input type="text" name="keyword_2" placeholder="검색어를 입력해주세요" aria-label="두 번째 키워드 검색어">
+                                                <select name="keyword_operator_2" id="keyword-operator-2" aria-label="두 번째 키워드 연산자">
+                                                    <option value="AND" selected>AND(모두 포함)</option>
+                                                    <option value="OR">OR(또는)</option>
+                                                    <option value="NOT">NOT(제외)</option>
+                                                </select>
+                                            </div>
+                                            <div class="keyword_search">
+                                                <select name="keyword_field_3" id="keyword-field-3" aria-label="세 번째 키워드 검색 필드">
+                                                    <option value="title">제목</option>
+                                                    <option value="author">저자</option>
+                                                    <option value="content">내용(목차)</option>
+                                                </select>
+                                                <input type="text" name="keyword_3" placeholder="검색어를 입력해주세요" aria-label="세 번째 키워드 검색어">
+                                                <select name="keyword_operator_3" id="keyword-operator-3" aria-label="세 번째 키워드 연산자">
+                                                    <option value="AND" selected>AND(모두 포함)</option>
+                                                    <option value="OR">OR(또는)</option>
+                                                    <option value="NOT">NOT(제외)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -172,7 +171,7 @@
                                         </div>
                                         <div class="detail_search_content" role="cell">
                                             <div class="publication_search">
-                                                <input type="text" placeholder="기관명을 입력하거나 선택해주세요." aria-label="발행기관명 입력">
+                                                <input type="text" name="publication_org" placeholder="기관명을 입력하거나 선택해주세요." aria-label="발행기관명 입력">
                                                 <button type="button" class="btn border_purple" aria-label="발행기관 검색 실행">
                                                     <img src="./images/search_icon.png" alt="검색 아이콘">
                                                     발행기관 검색
@@ -187,9 +186,9 @@
                                         </div>
                                         <div class="detail_search_content" role="cell">
                                             <div class="year_search">
-                                                <input type="text" aria-label="발행연도 시작년도">
+                                                <input type="text" name="year_start" aria-label="발행연도 시작년도">
                                                 <span class="symbol" aria-label="부터">~</span>
-                                                <input type="text" aria-label="발행연도 종료년도">
+                                                <input type="text" name="year_end" aria-label="발행연도 종료년도">
                                                 <span class="example">예 ) 2015</span>
                                             </div>
                                         </div>
@@ -259,9 +258,9 @@
                                         </div>
                                         <div class="detail_search_content" role="cell">
                                                 <div class="year_search">
-                                                    <input type="text" aria-label="관리번호 시작번호">
+                                                    <input type="text" name="manage_no_start" aria-label="관리번호 시작번호">
                                                     <span class="symbol" aria-label="부터">~</span>
-                                                    <input type="text" aria-label="관리번호 종료번호">
+                                                    <input type="text" name="manage_no_end" aria-label="관리번호 종료번호">
                                                     <span class="example">예) CM00020005</span>
                                                 </div>
                                         </div>
@@ -270,9 +269,10 @@
                             </div>
 
                             <div class="btn_section">
-                                <button type="button" class="btn border_purple" aria-label="검색 조건 초기화">초기화</button>
-                                <button type="button" class="btn purple" aria-label="상세검색 실행">검색</button>
+                                <button type="reset" class="btn border_purple" aria-label="검색 조건 초기화">초기화</button>
+                                <button type="submit" class="btn purple" aria-label="상세검색 실행">검색</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>

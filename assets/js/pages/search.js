@@ -1,12 +1,3 @@
-const openTypeDetail = () => {
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.modal').style.display = 'block';
-}
-
-const closeTypeDetail = () => {
-    document.body.style.overflow = 'auto';
-    document.querySelector('.modal').style.display = 'none';
-}
 
 // 전체 체크박스 기능
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,3 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+
+const openTypeDetail = () => {
+    document.body.style.overflow = 'hidden';
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false'); // 접근성 보완
+  }
+  
+  const closeTypeDetail = () => {
+    document.body.style.overflow = 'auto';
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true'); // 접근성 보완
+  }
