@@ -174,204 +174,83 @@
 
 /* 모바일 반응형 */
 @media screen and (max-width: 1024px) {
-    .detail_search_section{
-        padding-top: 4.8rem;
-        width: 100%;
+    /* 테이블 → 모바일형 */
+    .detail_search_section .detail_search_table { border-top: none; }
+    .detail_search_section .detail_search_item { display: block; border-bottom: none; }
+  
+    .detail_search_section .detail_search_title {
+      width: 100%;
+      display: block;
+      background-color: transparent;
+      margin-bottom: 0.8rem;
     }
-    
-    .detail_search_section .section_bottom{
-        width: 100%;
+    .detail_search_section .detail_search_title span { display: inline-block; }
+    .detail_search_section .detail_search_title button {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
     }
-    
-    .detail_search_section .detail_search_info{
-        margin-bottom: 4.8rem;
+  
+    .detail_search_section .detail_search_content { padding: 0; width: 100%; }
+    .detail_search_section .detail_search_item:not(:last-of-type) { margin-bottom: 2rem; }
+  
+    /* 키워드 검색: 2열 + 하단 입력 */
+    .detail_search_section .keyword_search {
+      height: auto;
+      flex-wrap: wrap;
+      column-gap: 0.8rem;
     }
-    
-    .detail_search_section .detail_search_table{
-        border-top: none;
+    .detail_search_section .keyword_search select:nth-of-type(1),
+    .detail_search_section .keyword_search select:nth-of-type(2) {
+      width: calc(50% - 0.4rem);
+      order: 1;
     }
-    
-    .detail_search_section .detail_search_item{
-        display: block;
-        border-bottom: none;
+    .detail_search_section .keyword_search input {
+      width: 100%;
+      margin-top: 0.8rem;
+      order: 3;
     }
-    
-    .detail_search_section .detail_search_title{
-        width: 100%;
-        display: block;
-        background-color: transparent;
-        margin-bottom: 0.8rem;
+    .detail_search_section .keyword_search:not(:first-of-type) { margin-top: 0.8rem; }
+  
+    /* 발행기관 검색 */
+    .detail_search_section .publication_search { height: 38px; }
+    .detail_search_section .publication_search input { width: calc(100% - 130px - 0.8rem); }
+    .detail_search_section .publication_search button { width: 130px; height: 38px; }
+  
+    /* 연도 검색 */
+    .detail_search_section .year_search { flex-wrap: wrap; }
+    .detail_search_section .year_search input { width: calc(50% - 0.5rem - 10px); }
+    .detail_search_section .year_search .symbol { display: inline-block; width: 10px; }
+    .detail_search_section .year_search .example { display: block; margin-top: 0.5rem; }
+  
+    /* 체크박스 유형 */
+    .detail_search_section .type_checkbox { padding: 0; }
+    .detail_search_section .type_checkbox ul { column-gap: 0.8rem; row-gap: 0.8rem; }
+    .detail_search_section .type_checkbox ul li {
+      width: calc(50% - 0.4rem);
+      min-width: auto;
     }
-    
-    .detail_search_section .detail_search_title span{
-        display: inline-block;
-        font-size: var(--font-size17);
+    .detail_search_section .type_checkbox ul li label { word-break: keep-all; }
+    .detail_search_section .type_checkbox ul li:nth-child(15),
+    .detail_search_section .type_checkbox ul li:nth-child(16) { width: 100%; }
+  
+    /* 라디오 유형: 버튼형 */
+    .detail_search_section .type_radio { flex-wrap: wrap; gap: 0.8rem; }
+    .detail_search_section .type_radio input[type="radio"] { display: none; }
+    .detail_search_section .type_radio label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 38px;
+      min-width: 75px;
+      padding: 0 8px;
+      border: 1px solid #D4D6D9;
+      border-radius: 4px;
+      color: var(--color-subText2);
     }
-    
-    .detail_search_section .detail_search_title button{
-        display: inline-block;
-        width: auto;
-        font-size: var(--font-size15);
-        vertical-align: middle;
+    .detail_search_section .type_radio input[type="radio"]:checked + label {
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
     }
-    
-    .detail_search_section .detail_search_content{
-        padding: 0;
-        width: 100%;
-    }
-    
-    .detail_search_section .detail_search_item:not(:last-of-type){
-        margin-bottom: 2rem;
-    }
-    
-    .detail_search_section .keyword_search{
-        height: auto;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 0.8rem;
-    }
-    
-    .detail_search_section .keyword_search select:nth-of-type(1){
-        width: calc(50% - 0.4rem);
-        order:1;
-    }
-    
-    .detail_search_section .keyword_search select:nth-of-type(2){
-        width: calc(50% - 0.4rem);
-        order:2;
-    }
-    
-    .detail_search_section .keyword_search input[type=text]{
-        width: 100%;
-        margin-top: 0.8rem;
-        order:3;
-    }
-    
-    .detail_search_section .keyword_search:not(:first-of-type){
-        margin-top: 0.8rem;
-    }
-
-    .detail_search_section .publication_search{
-        height: 38px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        column-gap: 1rem;
-    }
-    
-    .detail_search_section .publication_search input{
-        width: calc(100% - 130px - 0.8rem);
-    }
-    
-    .detail_search_section .publication_search button{
-        width: 130px;
-        height: 38px;
-        font-size: var(--font-size15);
-    }
-    
-    .detail_search_section .publication_search button img{
-        width: 16px;
-        height: 16px;
-        margin-right: 0.5rem;
-    }
-
-    .detail_search_section .year_search{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        column-gap: 1rem;
-    }
-    
-    .detail_search_section .year_search input{
-        width: calc(50% - 0.5rem - 10px);
-    }
-    
-    .detail_search_section .year_search .symbol{
-        display: inline-block;
-        width: 10px;
-    }
-    
-    .detail_search_section .year_search .example{
-        display: block;
-        margin-top: 0.5rem;
-        font-size: var(--font-size15);
-    }
-
-    .detail_search_section .type_checkbox{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        column-gap: 1rem;
-        padding: 0;
-    }
-    
-    .detail_search_section .type_checkbox ul{
-        display: flex;
-        flex-wrap: wrap;
-        column-gap:0.8rem;
-        row-gap: 0.8rem;
-    }
-    
-    .detail_search_section .type_checkbox ul li{
-        display: inline-block;
-        width: calc(50% - 0.4rem);
-        min-width: auto;
-        box-sizing: border-box;
-    }
-    
-    .detail_search_section .type_checkbox ul li input[type="checkbox"]{
-        width: 18px;
-        height: 18px;
-    }
-    
-    .detail_search_section .type_checkbox ul li label{
-        font-size: var(--font-size15);
-        padding-left:8px;
-        word-break: keep-all;
-    }
-    
-    .detail_search_section .type_checkbox ul li:nth-child(15), 
-    .detail_search_section .type_checkbox ul li:nth-child(16){
-        width: 100%;
-    }
-
-    .detail_search_section .type_radio{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.8rem;
-    }
-    
-    .detail_search_section .type_radio input[type="radio"]{
-        display: none;
-    }
-    
-    .detail_search_section .type_radio label{
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        height: 38px;
-        min-width: 75px;
-        font-size: var(--font-size15);
-        padding:0 8px;
-        border:1px solid #D4D6D9;
-        border-radius: 4px;
-        color:var(--color-subText2);
-    }
-
-    .detail_search_section .type_radio input[type="radio"]:checked + label{
-        border: 1px solid var(--color-primary);
-        color:var(--color-primary);
-    }
-    
-    .detail_search_section .type_radio span{
-        display: block;
-        color: #D92D20;
-        margin-top: 0.4rem;
-        font-size: var(--font-size15);
-    }
-}
+    .detail_search_section .type_radio span { display: block; margin-top: 0.4rem; }
+  }

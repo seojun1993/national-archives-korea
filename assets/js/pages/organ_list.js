@@ -260,17 +260,17 @@ $(document).ready(function() {
         
         // 모든 ul 닫기 + active 클래스 제거
         $('.organ_list_section.mobile .organ_list strong').each(function() {
-            $(this).siblings('ul').hide();
+            $(this).siblings('ul').removeClass('show').hide();
             $(this).removeClass('active');
         });
         
         // 만약 본인 리스트가 이미 열려있었다면 닫기만 하고 종료
         if (isOpened) {
-            $targetUl.hide();
+            $targetUl.removeClass('show').hide();
             $(this).removeClass('active');
         } else {
             // 아니면 본인 리스트만 열기
-            $targetUl.show();
+            $targetUl.addClass('show').show();
             $(this).addClass('active');
         }
     });
@@ -496,6 +496,8 @@ $(document).ready(function() {
 const appendContent = (title) => {
     $('.organ_layout_container').hide();
     $('.organ_list_section.mobile').show();
+    // 2뎁스로 넘어가면 search_result_info 숨기기
+    $('.search_result_info').hide();
 
     let listHtml = '';  // let으로 변경
     const targetDiv = $('.organ_list_body_content');
@@ -619,4 +621,6 @@ const appendContent = (title) => {
 const backBtnClick = () => {
     $('.organ_layout_container').show();
     $('.organ_list_section.mobile').hide();
+    // 뒤로가기로 돌아오면 search_result_info 다시 보이기
+    $('.search_result_info').show();
 }
