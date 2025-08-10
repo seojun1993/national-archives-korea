@@ -1,46 +1,46 @@
 $(document).ready(function() {
-    // 메뉴 데이터 정의 (국가기록원 발행기관별 검색 사이트 기준)
+    // 메뉴 데이터 정의
     const menuData = {
         '국가행정조직': [
             { name: '중앙행정기관', link: '#central-admin', children: {
-                '부': [],
-                '처': [],
-                '청': [],
-                '외국': [],
-                '원': [],
-                '위원회': [],
-                '대통령직속(위원회)': [],
-                '대통령직속(기타)': [],
-                '국무총리직속(위원회)': [],
-                '국무총리직속(기타)': []
+                '부': ['기획재정부(3,329)', '교육부(1,456)', '과학기술정보통신부(892)'],
+                '처': ['국무조정실(567)', '법제처(234)', '국가보훈처(789)'],
+                '청': ['국세청(2,145)', '관세청(445)', '통계청(123)', '조달청(334)'],
+                '외국': ['재외공관(89)', '영사관(45)'],
+                '원': ['감사원(456)'],
+                '위원회': ['공정거래위원회(234)', '방송통신위원회(123)'],
+                '대통령직속(위원회)': ['국가과학기술자문회의(67)', '국가교육회의(34)'],
+                '대통령직속(기타)': ['국가정보원(789)', '대통령경호처(456)'],
+                '국무총리직속(위원회)': ['국민권익위원회(234)', '개인정보보호위원회(123)'],
+                '국무총리직속(기타)': ['국정홍보처(89)', '국가보훈처(123)']
             }},
             { name: '보조기관', link: '#support-org', children: {
-                '부기관장': [],
-                '본부': [],
-                '실': [],
-                '국': [],
-                '부': [],
-                '과': [],
-                '단1': [],
-                '팀1': [],
-                '센터': []
+                '부기관장': ['차관(12)', '차차관(8)'],
+                '본부': ['정책기획본부(45)', '운영지원본부(34)'],
+                '실': ['기획조정실(123)', '정책기획실(89)', '감사실(45)'],
+                '국': ['기획예산국(67)', '총무국(54)', '정책국(78)'],
+                '부': ['정책부(34)', '기획부(23)'],
+                '과': ['기획과(45)', '총무과(34)', '예산과(23)', '인사과(56)'],
+                '단1': ['정책기획단(12)', '예산분석단(8)'],
+                '팀1': ['정책팀(23)', '기획팀(18)'],
+                '센터': ['정책연구센터(15)', '데이터센터(12)']
             }},
             { name: '보좌기관', link: '#assistant-org', children: {
                 '담당관': [],
                 '팀2': [],
-                '센터2': []
+                '센터2': [],
             }},
-            { name: '합의제행정기관', link: '#collegial-admin', children: {
+            { name: '합의제행정기관', link: '#collegial-admin' , children: {
                 '행정위원회': [],
                 '기타 합의제행정기관': [],
             }},
-            { name: '부속기관', link: '#affiliated-org', children: {
+            { name: '부속기관', link: '#affiliated-org' , children: {
                 '시험연구기관': [],
                 '교육훈련기관': [],
                 '문화기관': [],
                 '의료기관': [],
                 '자문기관': [],
-                '기타기관': []
+                '기타기관': [],
             }},
             { name: '특별지방행정기관', link: '#special-local-admin', children: {
                 '일반행정(병무)': [],
@@ -50,65 +50,20 @@ $(document).ready(function() {
                 '조세행정(국세)': [],
                 '관세': [],
             }},
-            { name: '대통령자문위원회', link: ''},
-            { name: '한시기구', link: ''},
-            { name: '제외기구', link: ''}
+            { name: '대통령자문위원회', link: '#presidential-advisory' },
+            { name: '한시기구', link: '#temporary-org' },
+            { name: '제외기구', link: '#excluded-org' }
         ],
         '자치행정조직': [
-            { name: '광역자치단체', link: '#metropolitan-gov', children: {
-                '특별시': [],
-                '도': [],
-                '광역시': [],
-                '특별자치도': []
-            }},
-            { name: '기초자치단체', link: '#basic-local-gov', children: {
-                '일반시': [],
-                '도농복합시': [],
-                '군': [],
-                '자치구': [],
-            }},
-            { name: '하부행정기구', link: '#sub-admin-org', children: {
-                '자치구가 아닌구': [],
-                '읍': [],
-                '면': [],
-                '동': []
-            }},
-            { name: '의회사무기구', link: '#assembly-secretariat', children: {
-                '의회사무처': [],
-                '의회사무국': [],
-                '의회사무과': []
-            }},
-            { name: '직속기관', link: '#direct-org', children: {
-                '지방농촌신흥기구': [],
-                '지방공무원교육원': [],
-                '보건환경연구원': [],
-                '보건소': [],
-                '지방소방학교': [],
-                '소방서': [],
-                '시립대학': [],
-                '전문대학': [],
-            }},
-            { name: '사업소', link: '#business-office', children: {
-                '사업소': [],
-                '본부': [],
-                '과': [],
-                '지역사업소': []
-            }},
-            { name: '출장소', link: '#business-office', children: {
-                '도 출장소': [],
-                '시 출장소': [],
-            }},
-            { name: '보조기관', link: '#business-office', children: {
-                '실': [],
-                '국': [],
-                '본부': [],
-                '과': [],
-                '과단위 실': [],
-            }},
-            { name: '보좌기관', link: '#business-office', children: {
-                '관': [],
-                '담당관': [],
-            }},
+            { name: '광역자치단체', link: '#metropolitan-gov' },
+            { name: '기초자치단체', link: '#basic-local-gov' },
+            { name: '하부행정기구', link: '#sub-admin-org' },
+            { name: '의회사무기구', link: '#assembly-secretariat' },
+            { name: '직속기관', link: '#direct-org' },
+            { name: '사업소', link: '#business-office' },
+            { name: '출장소', link: '#branch-office' },
+            { name: '보조기관', link: '#local-support-org' },
+            { name: '보좌기관', link: '#local-assistant-org' }
         ],
         '교육행정조직': [
             { name: '시·도 교육청', link: '#provincial-edu-office'},
@@ -252,26 +207,6 @@ $(document).ready(function() {
         }
     });
 
-    // 모바일 2depth 클릭 이벤트 (동적 바인딩)
-    $(document).on('click', '.mobile_submenu_list a', function(e) {
-        e.preventDefault();
-        
-        const $clickedItem = $(this);
-        const itemName = $clickedItem.text().trim();
-        
-        // 현재 1depth 메뉴 찾기
-        const $activeMenu = $('.detail_search_section aside nav ul > li.active');
-        const activeMenuTitle = $activeMenu.find('button').text().trim();
-        const activeMenuData = menuData[activeMenuTitle];
-        
-        // 클릭된 2depth 아이템의 상세 정보 찾기
-        const clickedItemData = activeMenuData.find(item => item.name === itemName);
-        
-        if (clickedItemData && clickedItemData.children) {
-            updateMobile3DepthContent(itemName, clickedItemData.children);
-        }
-    });
-    
     /**
      * PC용 전체 콘텐츠 영역 업데이트 함수
      * @param {string} title - 메뉴 제목
@@ -291,8 +226,6 @@ $(document).ready(function() {
         // children가 있는 아이템과 없는 아이템 분리
         const itemsWithChildren = menuItems.filter(item => item.children);
         const itemsWithoutChildren = menuItems.filter(item => !item.children);
-        
-        // 디버깅용 로그 제거
         
         // children가 있는 아이템들 처리 - 각각 별도의 organ_list_content_wrap
         itemsWithChildren.forEach(function(item) {
@@ -406,7 +339,7 @@ $(document).ready(function() {
         $pcSection.html(contentHtml);
         $pcSectionTitle.text(title);
     }
-    
+
     /**
      * 모바일용 2depth 콘텐츠 영역 업데이트 함수
      * @param {string} title - 메뉴 제목
@@ -421,7 +354,7 @@ $(document).ready(function() {
             listHtml = '<ul class="mobile_submenu_list">';
             
             menuItems.forEach(function(item) {
-                listHtml += `<li><a href="${item.link}" data-name="${item.name}">${item.name}</a></li>`;
+                listHtml += `<li><a href="${item.link}">${item.name}</a></li>`;
             });
             
             listHtml += '</ul>';
@@ -429,66 +362,8 @@ $(document).ready(function() {
             listHtml = '<p>하위 메뉴가 없습니다.</p>';
         }
         
+        // 우측 모바일 영역에 표시 (타이틀 제외하고 리스트만)
         $rightContentMobile.html(listHtml);
     }
-    
-    /**
-     * 모바일용 3depth 콘텐츠 영역 업데이트 함수
-     * @param {string} itemName - 2depth 아이템명
-     * @param {Object} childrenData - 3depth 데이터
-     */
-    function updateMobile3DepthContent(itemName, childrenData) {
-        const $rightContentMobile = $('.organ_submenu_list.mobile');
-        
-        let listHtml = `
-            <div class="mobile_3depth_content">
-                <div class="mobile_3depth_header">
-                    <button type="button" class="back_btn">← 뒤로</button>
-                    <h4>${itemName}</h4>
-                </div>
-                <div class="mobile_3depth_body">`;
-        
-        if (Object.keys(childrenData).length > 0) {
-            Object.keys(childrenData).forEach(function(category) {
-                const organs = childrenData[category];
-                if (organs.length > 0) {
-                    listHtml += `
-                        <div class="category_group">
-                            <h5>${category}</h5>
-                            <ul class="organ_detail_list">`;
-                    
-                    organs.forEach(function(organ) {
-                        listHtml += `<li><a href="#;">${organ}</a></li>`;
-                    });
-                    
-                    listHtml += `
-                            </ul>
-                        </div>`;
-                }
-            });
-        } else {
-            listHtml += '<p>상세 정보가 없습니다.</p>';
-        }
-        
-        listHtml += `
-                </div>
-            </div>`;
-        
-        $rightContentMobile.html(listHtml);
-    }
-    
-    // 모바일 3depth 뒤로가기 버튼 클릭 이벤트
-    $(document).on('click', '.back_btn', function(e) {
-        e.preventDefault();
-        
-        // 현재 1depth 메뉴로 돌아가기
-        const $activeMenu = $('.detail_search_section aside nav ul > li.active');
-        const activeMenuTitle = $activeMenu.find('button').text().trim();
-        const activeMenuData = menuData[activeMenuTitle];
-        
-        if (activeMenuData) {
-            updateMobileRightContent(activeMenuTitle, activeMenuData);
-        }
-    });
     
 });
