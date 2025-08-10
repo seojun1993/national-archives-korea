@@ -1,4 +1,3 @@
-$(document).ready(function() {
     // 메뉴 데이터 정의
     const menuData = {
         '국가행정조직': [
@@ -50,9 +49,25 @@ $(document).ready(function() {
                 '조세행정(국세)': [],
                 '관세': [],
             }},
-            { name: '대통령자문위원회', link: '#presidential-advisory' },
-            { name: '한시기구', link: '#temporary-org' },
-            { name: '제외기구', link: '#excluded-org' }
+            { name: '대통령자문위원회', link: '#presidential-advisory', organs: [
+                '국가과학기술자문회의(45)',
+                '국가교육회의(32)', 
+                '저출산고령사회위원회(28)',
+                '국가균형발전위원회(41)',
+                '국가지식재산위원회(25)'
+            ]},
+            { name: '한시기구', link: '#temporary-org', organs: [
+                '코로나19백신도입TF(15)',
+                '한국판뉴딜추진단(22)',
+                '디지털정부혁신추진단(18)',
+                '탄소중립녹색성장위원회(30)'
+            ]},
+            { name: '제외기구', link: '#excluded-org', organs: [
+                '국가정보원(1200)',
+                '대통령경호처(450)',
+                '국군기무사령부(800)',
+                '국가보안기술연구소(120)'
+            ]}
         ],
         '자치행정조직': [
             { name: '광역자치단체', link: '#metropolitan-gov' },
@@ -162,6 +177,9 @@ $(document).ready(function() {
         ],
         '미분류': []
     };
+
+$(document).ready(function() {
+
     
     // 페이지 로딩 시 첫 번째 메뉴(active 상태)의 내용 표시
     const $firstActiveMenu = $('.detail_search_section aside nav ul > li.active');
@@ -207,6 +225,38 @@ $(document).ready(function() {
         }
     });
 
+    // 모바일 2depth 버튼 클릭 이벤트 (동적으로 생성된 요소에 대한 이벤트 위임)
+    $(document).on('click', '.mobile_submenu_btn', function(e) {
+        e.preventDefault();
+        
+        const itemName = $(this).data('name');
+        appendContent(itemName);
+    });
+
+    // 모바일 상세페이지에서 strong 다음 ul 토글 (메인 네비게이션과 동일한 방식)
+    $(document).on('click', '.organ_list_section.mobile .organ_list strong', function(e) {
+        e.preventDefault();
+        
+        const $targetUl = $(this).siblings('ul');
+        const isOpened = $(this).hasClass('active');
+        
+        // 모든 ul 닫기 + active 클래스 제거
+        $('.organ_list_section.mobile .organ_list strong').each(function() {
+            $(this).siblings('ul').hide();
+            $(this).removeClass('active');
+        });
+        
+        // 만약 본인 리스트가 이미 열려있었다면 닫기만 하고 종료
+        if (isOpened) {
+            $targetUl.hide();
+            $(this).removeClass('active');
+        } else {
+            // 아니면 본인 리스트만 열기
+            $targetUl.show();
+            $(this).addClass('active');
+        }
+    });
+
     /**
      * PC용 전체 콘텐츠 영역 업데이트 함수
      * @param {string} title - 메뉴 제목
@@ -221,67 +271,56 @@ $(document).ready(function() {
             return;
         }
         
-        let contentHtml = '';
+        const htmlParts = [];
         
         // children가 있는 아이템과 없는 아이템 분리
-        const itemsWithChildren = menuItems.filter(item => item.children);
-        const itemsWithoutChildren = menuItems.filter(item => !item.children);
+        const itemsWithChildren = menuItems.filter(item => item.children && Object.keys(item.children).length > 0);
+        const itemsWithoutChildren = menuItems.filter(item => !item.children || Object.keys(item.children).length === 0);
         
         // children가 있는 아이템들 처리 - 각각 별도의 organ_list_content_wrap
         itemsWithChildren.forEach(function(item) {
-            contentHtml += `
+            htmlParts.push(`
                 <div class="organ_list_content_wrap">
                     <ul class="organ_list_content">
                         <li>
                             <div class="item">
                                 <h4>${item.name}</h4>
-                                <ul class="organ_list">`;
+                                <ul class="organ_list">`);
             
             // 각 카테고리별로 기관들 나열 (빈 배열이라도 strong 태그는 표시)
             Object.keys(item.children).forEach(function(category) {
                 const organs = item.children[category];
-                contentHtml += `
-                                <li>
-                                    <strong>${category}</strong>
-                                    <ul>`;
+                htmlParts.push(`
+                    <li>
+                        <strong>${category}</strong>
+                        <ul>`);
                 
                 if (organs.length > 0) {
-                    organs.forEach(function(organ) {
+                    const organItems = organs.map(organ => {
                         // 기관명에서 개수 분리
                         const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
-                        if (match) {
-                            const orgName = match[1];
-                            const orgCount = match[2];
-                            contentHtml += `
-                                        <li>
-                                            <a href="#;">
-                                                <span class="org_name">${orgName}</span>
-                                                <span class="org_cnt">(${orgCount})</span>
-                                            </a>
-                                        </li>`;
-                        } else {
-                            contentHtml += `
-                                        <li>
-                                            <a href="#;">
-                                                <span class="org_name">${organ}</span>
-                                                <span class="org_cnt">(0)</span>
-                                            </a>
-                                        </li>`;
-                        }
+                        return `
+                            <li>
+                                <a href="#;">
+                                    <span class="org_name">${match ? match[1] : organ}</span>
+                                    <span class="org_cnt">(${match ? match[2] : '0'})</span>
+                                </a>
+                            </li>`;
                     });
+                    htmlParts.push(...organItems);
                 }
                 
-                contentHtml += `
+                htmlParts.push(`
                                     </ul>
-                                </li>`;
+                                </li>`);
             });
             
-            contentHtml += `
+            htmlParts.push(`
                                 </ul>
                             </div>
                         </li>
                     </ul>
-                </div>`;
+                </div>`);
         });
         
         // children가 없는 아이템들 처리 - 국가행정조직의 특정 아이템들만 한줄 배치
@@ -297,12 +336,11 @@ $(document).ready(function() {
             
             // 국가행정조직의 특정 아이템들을 한줄로 배치
             if (currentCategorySpecialItems.length > 0) {
-                contentHtml += `
+                htmlParts.push(`
                     <div class="organ_list_content_wrap inline-items">
-                        <ul class="organ_list_content">`;
+                        <ul class="organ_list_content">`);
                 
-                currentCategorySpecialItems.forEach(function(item) {
-                    contentHtml += `
+                const specialItemsHtml = currentCategorySpecialItems.map(item => `
                             <li>
                                 <div class="item">
                                     <h4>${item.name}</h4>
@@ -310,33 +348,91 @@ $(document).ready(function() {
                                         <!-- children가 없으므로 빈 리스트 -->
                                     </ul>
                                 </div>
-                            </li>`;
-                });
+                            </li>`);
                 
-                contentHtml += `
+                htmlParts.push(...specialItemsHtml);
+                htmlParts.push(`
                         </ul>
-                    </div>`;
+                    </div>`);
             }
             
             // 나머지 일반 아이템들은 개별 블록으로
             normalItems.forEach(function(item) {
-                contentHtml += `
+                let appendHtml = '';
+                
+                appendHtml += `
                     <div class="organ_list_content_wrap">
                         <ul class="organ_list_content">
                             <li>
                                 <div class="item">
                                     <h4>${item.name}</h4>
                                     <ul class="organ_list">
-                                        <!-- children가 없으므로 빈 리스트 -->
+                                        <li>
+                                            <strong>${item.name}</strong>
+                                            <ul>`;
+                
+                // title(item.name)과 매칭되는 실제 데이터 찾기
+                let organData = [];
+                
+                // menuData에서 현재 활성화된 1depth 메뉴 찾기
+                const activeMenuTitle = $('.detail_search_section aside nav ul > li.active button').text().trim();
+                const activeMenuData = menuData[activeMenuTitle];
+                
+                if (activeMenuData) {
+                    // item.name과 매칭되는 데이터 찾기
+                    const matchedItem = activeMenuData.find(menuItem => menuItem.name === item.name);
+                    if (matchedItem && matchedItem.organs) {
+                        organData = matchedItem.organs;
+                    }
+                }
+                
+                // 데이터가 없으면 더미 데이터 사용
+                if (organData.length === 0) {
+                    organData = [
+                        `${item.name} 샘플기관 1(100)`,
+                        `${item.name} 샘플기관 2(200)`,
+                        `${item.name} 샘플기관 3(300)`
+                    ];
+                }
+                
+                organData.forEach(function(organ) {
+                    // 기관명에서 개수 분리
+                    const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
+                    if (match) {
+                        const orgName = match[1];
+                        const orgCount = match[2];
+                        appendHtml += `
+                                                <li>
+                                                    <a href="#;">
+                                                        <span class="org_name">${orgName}</span>
+                                                        <span class="org_cnt">(${orgCount})</span>
+                                                    </a>
+                                                </li>`;
+                    } else {
+                        appendHtml += `
+                                                <li>
+                                                    <a href="#;">
+                                                        <span class="org_name">${organ}</span>
+                                                        <span class="org_cnt">(0)</span>
+                                                    </a>
+                                                </li>`;
+                    }
+                });
+                
+                appendHtml += `
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
                     </div>`;
+                
+                htmlParts.push(appendHtml);
             });
         }
         
-        $pcSection.html(contentHtml);
+        $pcSection.html(htmlParts.join(''));
         $pcSectionTitle.text(title);
     }
 
@@ -355,7 +451,7 @@ $(document).ready(function() {
             
             menuItems.forEach(function(item) {
                 listHtml += `<li>
-                    <button type="button" class="mobile_submenu_btn" aria-expanded="false" aria-controls="mobile_submenu_content" onclick="appendContent('${item.name}')">
+                    <button type="button" class="mobile_submenu_btn" data-name="${item.name}">
                         ${item.name}
                     </button>
                 </li>`;
@@ -375,193 +471,114 @@ const appendContent = (title) => {
     $('.organ_layout_container').hide();
     $('.organ_list_section.mobile').show();
 
+    let listHtml = '';  // let으로 변경
     const targetDiv = $('.organ_list_body_content');
+    
+    // organ-list-title에 클릭한 타이틀 설정
+    $('#organ-list-title').text(title);
 
-    targetDiv.html(`
-        <div class="organ_list_content_wrap">
-            <div class="publication_body" role="rowgroup">
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>연감</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 수행한 업무와 관련하여, 한 해 동안 일어난 경과, 사건, 통계 등을 수록·발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>연감 연차보고서</span>
-                    </div>
-                </div>
+    const activeMenuTitle = $('.detail_search_section aside nav ul > li.active button').text().trim();
+    const targetData = menuData[activeMenuTitle];
 
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>백서</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>정부 정책이나 업무 수행에 대한 현상을 분석하고, 미래를 전망하여 그 내용을 국민에게 알리기 위해 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>백서 총람</span>
-                    </div>
+    for(let i = 0; i < targetData.length; i++) {
+        if(targetData[i].name === title) {
+            listHtml += `
+                <div class="organ_list_content_wrap">
+                    <ul class="organ_list_content">
+                        <li>
+                            <div class="item">
+                                <ul class="organ_list">`;
+            
+            // organs 배열이 있으면 반복문으로 처리 (children가 없는 경우)
+            if(targetData[i].organs && targetData[i].organs.length > 0) {
+                listHtml += `
+                                    <li>
+                                        <strong>${targetData[i].name}</strong>
+                                        <ul class="organ_info_list">`;
+                targetData[i].organs.forEach(function(organ) {
+                    // 기관명에서 개수 분리
+                    const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
+                    if (match) {
+                        const orgName = match[1];
+                        const orgCount = match[2];
+                        listHtml += `
+                                            <li>
+                                                <a href="#;">
+                                                    <span class="org_name">${orgName}</span>
+                                                    <span class="org_cnt">(${orgCount})</span>
+                                                </a>
+                                            </li>`;
+                    } else {
+                        listHtml += `
+                                            <li>
+                                                <a href="#;">
+                                                    <span class="org_name">${organ}</span>
+                                                    <span class="org_cnt">(0)</span>
+                                                </a>
+                                            </li>`;
+                    }
+                });
+                
+                listHtml += `
+                                        </ul>
+                                    </li>`;
+            }
+            // children 객체가 있으면 카테고리별로 처리 (중앙행정기관, 보조기관 등)
+            else if(targetData[i].children) {
+                Object.keys(targetData[i].children).forEach(function(category) {
+                    const organs = targetData[i].children[category];
+                    
+                    listHtml += `
+                                            <li>
+                                                <strong>${category}</strong>
+                                                <ul>`;
+                    
+                    if (organs.length > 0) {
+                        organs.forEach(function(organ) {
+                            // 기관명에서 개수 분리
+                            const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
+                            if (match) {
+                                const orgName = match[1];
+                                const orgCount = match[2];
+                                listHtml += `
+                                                    <li>
+                                                        <a href="#;">
+                                                            <span class="org_name">${orgName}</span>
+                                                            <span class="org_cnt">(${orgCount})</span>
+                                                        </a>
+                                                    </li>`;
+                            } else {
+                                listHtml += `
+                                                    <li>
+                                                        <a href="#;">
+                                                            <span class="org_name">${organ}</span>
+                                                            <span class="org_cnt">(0)</span>
+                                                        </a>
+                                                    </li>`;
+                            }
+                        });
+                    }
+                    
+                    listHtml += `
+                                                </ul>
+                                            </li>`;
+                });
+            }
+            
+            listHtml += `
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            `;
+            break; // 찾았으면 반복문 종료
+        }
+    }
 
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>통계집</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 소관 업무 분야의 통계·결산·전망 등을 대외발표 또는 대외 보고를 위해 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>총조사 통계연보 통계지표</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>업무안내 질의서</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 소관 업무와 관련하여 일반 국민이 해당 업무를 이해하고 활용할 수 있도록 업무 내용, 절차 및 질의 등 주요 사항을 간추려 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>업무안내서, 업무질의</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>사업보고서</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관에서 사업수행 과정 또는 업무수행 결과 및 성과 등을 정리하여 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>업무계획 사업계획 심사보고 평가보고서</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>연구조사보고서</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관에서 수행한 연구 및 조사 결과를 체계적으로 정리하여 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>연구보고서 조사보고서 용역보고서</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>법규집</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 법령(법률, 명령, 조례, 규칙 등)과 관련한 내용을 바탕으로 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>법령집 법규집 판례집</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>회의자료</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 회의 목적 또는 회의의 진행 과정 및 내용 등을 바탕으로 발간한 간행물(중요수집) 외국 정부기관 또는 국제기구와의 교류·협력, 협상, 교류활동 내용, 국회와 중앙행정기관 간 또는 지방의회와 지방자치단체 간 주고받은 공식 내용 등</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>회의록 회의보고서 의정보고서 세미나 공청회 심포지엄 포럼</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>연설 강연집</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 연설이나 강연 원고를 모아 발간한 간행물(중요수집) 장·차관급 중앙행정기관장 또는 광역자치단체장의 공식적인 연설문, 기고문, 인터뷰 자료 및 해당 기관의 공식적인 브리핑 등</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>연설문집 취임사 어록 담화문</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>사료집</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 연구 목적으로 문헌이나 기록, 문서 등을 편집하여 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>사료집 사료총서</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>연혁집</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관의 연혁 및 사건 등을 규명하고 변천 과정을 기술하여 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>연혁집 조직변천사</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>목록류</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 특정 주제, 분야 등과 관련한 기록, 문헌, 문서의 목록을 정리하여 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>회의안건목록집 분류집</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>전시 도감 화보집</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 그림, 사진 등을 모아 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>도감 도록</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>업무편람</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 소관 업무와 관련하여 업무 담당자가 해당 업무를 이해하고 활용할 수 있도록 업무 내용, 절차 등의 주요 사항을 간추려 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>정보공개업무편람</span>
-                    </div>
-                </div>
-
-                <div class="publication_item" role="row">
-                    <div class="item_type" role="cell" aria-colindex="1">
-                        <span>기관지</span>
-                    </div>
-                    <div class="item_content" role="cell" aria-colindex="2">
-                        <p>공공기관이 기관의 동향, 행사, 소식 등을 알리기 위해 발간한 간행물</p>
-                    </div>
-                    <div class="item_example" role="cell" aria-colindex="3">
-                        <span>월간지 주간지 소식지</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `);
+    targetDiv.html(listHtml);
 }
 
 const backBtnClick = () => {

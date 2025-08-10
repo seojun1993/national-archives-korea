@@ -81,8 +81,13 @@
 
   --label-type15-bg: #F0F0F0;
   --label-type15-txt: #323232;
+}
 
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
 
 /* default */
@@ -233,11 +238,11 @@ textarea:focus {
 }
 
 .pc{
-  display: block !important;
+  display: block;
 }
 
 .mobile{
-  display: none !important;
+  display: none;
 }
 
 /* 레이아웃 공통  */
@@ -783,7 +788,7 @@ textarea:focus {
     display: none !important;
   }
   .mobile{
-    display: block !important;
+    display: block;
   }
 
   .boardpage{
