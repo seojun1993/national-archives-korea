@@ -296,7 +296,7 @@ $(document).ready(function() {
         const itemsWithoutChildren = menuItems.filter(item => !item.children || Object.keys(item.children).length === 0);
         
         // children가 있는 아이템들 처리 - 각각 별도의 organ_list_content_wrap
-        itemsWithChildren.forEach(function(item) {
+        itemsWithChildren.forEach(function(item, itemIndex) {
             htmlParts.push(`
                 <div class="organ_list_content_wrap">
                     <ul class="organ_list_content">
@@ -306,12 +306,17 @@ $(document).ready(function() {
                                 <ul class="organ_list">`);
             
             // 각 카테고리별로 기관들 나열 (빈 배열이라도 strong 태그는 표시)
-            Object.keys(item.children).forEach(function(category) {
+            Object.keys(item.children).forEach(function(category, categoryIndex) {
                 const organs = item.children[category];
+                const uniqueId = `pc-organ-${itemIndex}-${categoryIndex}-${category.replace(/\s+/g, '-')}`;
                 htmlParts.push(`
                     <li>
-                        <strong>${category}</strong>
-                        <ul>`);
+                        <strong role="button" 
+                                tabindex="0" 
+                                aria-label="${category} 하위 메뉴 토글" 
+                                aria-expanded="false" 
+                                aria-controls="${uniqueId}">${category}</strong>
+                        <ul id="${uniqueId}">`);
                 
                 if (organs.length > 0) {
                     const organItems = organs.map(organ => {
@@ -319,9 +324,9 @@ $(document).ready(function() {
                         const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
                         return `
                             <li>
-                                <a href="#;">
+                                <a href="#" aria-label="${match ? match[1] : organ} 기관 상세보기">
                                     <span class="org_name">${match ? match[1] : organ}</span>
-                                    <span class="org_cnt">(${match ? match[2] : '0'})</span>
+                                    <span class="org_cnt" aria-label="기관 수">(${match ? match[2] : '0'})</span>
                                 </a>
                             </li>`;
                     });
@@ -469,7 +474,10 @@ $(document).ready(function() {
             
             menuItems.forEach(function(item) {
                 listHtml += `<li>
-                    <button type="button" class="mobile_submenu_btn" data-name="${item.name}">
+                    <button type="button" class="mobile_submenu_btn" data-name="${item.name}" 
+                            aria-label="${item.name} 메뉴 열기" 
+                            aria-expanded="false" 
+                            aria-controls="organ-list-content">
                         ${item.name}
                     </button>
                 </li>`;
@@ -511,8 +519,12 @@ const appendContent = (title) => {
             if(targetData[i].organs && targetData[i].organs.length > 0) {
                 listHtml += `
                                     <li>
-                                        <strong>${targetData[i].name}</strong>
-                                        <ul class="organ_info_list">`;
+                                        <strong role="button" 
+                                                tabindex="0" 
+                                                aria-label="${targetData[i].name} 하위 메뉴 토글" 
+                                                aria-expanded="false" 
+                                                aria-controls="mobile-organ-info-${i}">${targetData[i].name}</strong>
+                                        <ul class="organ_info_list" id="mobile-organ-info-${i}">`;
                 targetData[i].organs.forEach(function(organ) {
                     // 기관명에서 개수 분리
                     const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
@@ -521,9 +533,9 @@ const appendContent = (title) => {
                         const orgCount = match[2];
                         listHtml += `
                                             <li>
-                                                <a href="#;">
+                                                <a href="#" aria-label="${orgName} 기관 상세보기">
                                                     <span class="org_name">${orgName}</span>
-                                                    <span class="org_cnt">(${orgCount})</span>
+                                                    <span class="org_cnt" aria-label="기관 수">(${orgCount})</span>
                                                 </a>
                                             </li>`;
                     } else {
@@ -543,13 +555,18 @@ const appendContent = (title) => {
             }
             // children 객체가 있으면 카테고리별로 처리 (중앙행정기관, 보조기관 등)
             else if(targetData[i].children) {
-                Object.keys(targetData[i].children).forEach(function(category) {
+                Object.keys(targetData[i].children).forEach(function(category, categoryIndex) {
                     const organs = targetData[i].children[category];
+                    const uniqueId = `mobile-organ-${i}-${categoryIndex}-${category.replace(/\s+/g, '-')}`;
                     
                     listHtml += `
                                             <li>
-                                                <strong>${category}</strong>
-                                                <ul>`;
+                                                <strong role="button" 
+                                                        tabindex="0" 
+                                                        aria-label="${category} 하위 메뉴 토글" 
+                                                        aria-expanded="false" 
+                                                        aria-controls="${uniqueId}">${category}</strong>
+                                                <ul id="${uniqueId}">`;
                     
                     if (organs.length > 0) {
                         organs.forEach(function(organ) {
@@ -560,17 +577,17 @@ const appendContent = (title) => {
                                 const orgCount = match[2];
                                 listHtml += `
                                                     <li>
-                                                        <a href="#;">
+                                                        <a href="#" aria-label="${orgName} 기관 상세보기">
                                                             <span class="org_name">${orgName}</span>
-                                                            <span class="org_cnt">(${orgCount})</span>
+                                                            <span class="org_cnt" aria-label="기관 수">(${orgCount})</span>
                                                         </a>
                                                     </li>`;
                             } else {
                                 listHtml += `
                                                     <li>
-                                                        <a href="#;">
+                                                        <a href="#" aria-label="${organ} 기관 상세보기">
                                                             <span class="org_name">${organ}</span>
-                                                            <span class="org_cnt">(0)</span>
+                                                            <span class="org_cnt" aria-label="기관 수">(0)</span>
                                                         </a>
                                                     </li>`;
                             }
