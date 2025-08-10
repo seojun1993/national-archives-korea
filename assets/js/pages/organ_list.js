@@ -195,7 +195,7 @@ $(document).ready(function() {
         
         if (firstMenuData) {
             // PC/모바일 구분해서 초기 로딩
-            if (window.innerWidth >= 768) {
+            if (window.innerWidth >= 1024) {
                 updatePCContent(firstMenuTitle, firstMenuData);
             } else {
                 updateMobileRightContent(firstMenuTitle, firstMenuData);
@@ -208,7 +208,7 @@ $(document).ready(function() {
     
     // 화면 크기 변경 시 모바일 진입 시 active 상태 재설정
     $(window).on('resize', function() {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 1024) {
             // 모바일로 진입 시 첫 번째 메뉴(국가행정조직) active 상태로 설정
             $('.detail_search_section aside nav ul > li').removeClass('active');
             $('.detail_search_section aside nav ul > li:first-child').addClass('active');
@@ -228,14 +228,14 @@ $(document).ready(function() {
         // 해당 메뉴의 데이터가 있는 경우만 표시
         if (menuData[menuTitle] && menuData[menuTitle].length > 0) {
             // PC/모바일 구분해서 렌더링
-            if (window.innerWidth >= 768) {
+            if (window.innerWidth >= 1024) {
                 updatePCContent(menuTitle, menuData[menuTitle]);
             } else {
                 updateMobileRightContent(menuTitle, menuData[menuTitle]);
             }
         } else {
             // 데이터가 없는 경우 (미분류 등)
-            if (window.innerWidth >= 768) {
+            if (window.innerWidth >= 1024) {
                 updatePCContent(menuTitle, []);
             } else {
                 updateMobileRightContent(menuTitle, []);
