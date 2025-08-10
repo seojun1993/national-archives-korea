@@ -15,6 +15,7 @@
 
     <script src="assets/js/lib/jquery-1.9.1.min.js"></script>
     <script src="assets/js/common.js"></script>
+    <script src="assets/js/pages/organ_list.js"></script>
 </head>
 <body>
     <!-- 스킵 네비게이션 -->
@@ -120,448 +121,89 @@
                                 <p>
                                   행정안전부의 행정표준코드를 기준으로 발행기관을 선택할 수 있습니다(폐지기관명 포함).</p>
                               </div>
+                              <div class="organ_layout_container">
                                 <aside role="complementary" aria-label="검색 결과 필터">
-                                    <nav aria-label="유형별 필터">
-                                        <h3 class="sr-only">유형별 분류</h3>
-                                        <ul>
-                                          <li class="active">
-                                              <a href="#;" aria-current="page" class="pc">
-                                                  국가행정조직
-                                              </a>
-                                              <button type="button" class="mobile">
-                                                국가행정조직
-                                              </button>
-                                              <ul>
-                                                <li>
-                                                  <a href="#;">
-                                                    중앙행정기관
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    보조기관
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    보좌기관
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    합의제행정기관
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    부속기관
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    특별지방행정기관
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    대통령자문위원회
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    한시기구
-                                                  </a>
-                                                </li>
-                                                <li>
-                                                  <a href="#;">
-                                                    제외기구
-                                                  </a>
-                                                </li>
-                                              </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;">
-                                                자치행정조직
-                                            </a>
-
-                                            <button type="button" class="mobile">
-                                              자치행정조직
-                                            </button>
-                                                <ul>
-                                                  <li>
-                                                    <a href="#;">
-                                                      광역자치단체
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      기초자치단체
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      하부행정기구
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      의회사무기구
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      직속기관
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      사업소
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      출장소
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      보조기관
-                                                    </a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="#;">
-                                                      보좌기관
-                                                    </a>
-                                                  </li>
-                                                </ul>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;">
-                                                교육행정조직
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              교육행정조직
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  시.도 교육청                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  시도교육청 직속기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  교육위원회 의사국
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  지역교육청
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  지역교육청 소속기관
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                입법조직
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              입법조직
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  보조기관
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                정부투자기관 및 기타
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              정부투자기관 및 기타
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  정부투자기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  정부출연단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  공적단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  보조단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  재투자단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  재출연단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  기금출연.보조단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  행정사무대행단체
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  기타
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                산하기관
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              산하기관
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  정부출연기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  정부투자기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  정부재투자기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  정부출자기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  기금관리기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  정부보조기관
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  출연,투자,출자기관의 자회사
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  기타
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                위원회
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              위원회
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  행정
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  의결
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  자문
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  심의
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                초등학교
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              초등학교
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  초등학교(본교)
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                중학교
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              중학교
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  중학교(본교)
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                고등학교
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              고등학교
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  일반계 고등학교
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  전문계 고등학교
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  기타 고등학교 과정
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                고등교육기관
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              고등교육기관
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  4년제 정규대학
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  산업대학
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  교육대학
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  전문대학
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  방송통신대학
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  대학원 대학
-                                                </a>
-                                              </li>
-                                              <li>
-                                                <a href="#;">
-                                                  각종학교
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                사법기관
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              사법기관
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  사법조직
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                헌법기관
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              헌법기관
-                                            </button>
-                                            <ul>
-                                              <li>
-                                                <a href="#;">
-                                                  헌법조직
-                                                </a>
-                                              </li>
-                                            </ul>
-                                          </li>
-                                          <li>
-                                            <a href="#;" class="pc">
-                                                미분류
-                                            </a>
-                                            <button type="button" class="mobile">
-                                              미분류
-                                            </button>
-                                          </li>
-                                        </ul>
-                                    </nav>
+                                  <nav aria-label="유형별 필터">
+                                    <h3 class="sr-only">유형별 분류</h3>
+                                    <ul>
+                                      <li class="active">
+                                          <button type="button">
+                                            국가행정조직
+                                          </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          자치행정조직
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          교육행정조직
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          입법조직
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          정부투자기관 및 기타
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          산하기관
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          위원회
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          초등학교
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          중학교
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          고등학교
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          고등교육기관
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          사법기관
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          헌법기관
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <button type="button">
+                                          미분류
+                                        </button>
+                                      </li>
+                                    </ul>
+                                  </nav>
                                 </aside>
+
+                                <div class="organ_submenu_list mobile"> <!-- 2depth 서브메뉴 -->
+                                  <!-- 2depth 메뉴 리스트 -->
+                                </div>
+                              </div>
 
                                 <div id="organ-list-content" class="organ_list_section pc">
                                     <div class="organ_list_header">
@@ -612,7 +254,7 @@
                                                                   </span>
                                                                   <span class="org_cnt">(3000)</span>
                                                                 </a>
-                                                              </li>                                                   <li>
+                                                              </li>                                                   
                                                             </ul>
                                                           </li>
                                                           <li>
@@ -633,7 +275,8 @@
                                                                   </span>
                                                                   <span class="org_cnt">(3000)</span>
                                                                 </a>
-                                                              </li>                                                                <li>
+                                                              </li>                                                                
+                                                              <li>
                                                                 <a href="#;">
                                                                   <span class="org_name">
                                                                     건설교통부건설교통부건설교통부건설교통부건설교통부건설교통부건설교통부건설교통부건설교통부
