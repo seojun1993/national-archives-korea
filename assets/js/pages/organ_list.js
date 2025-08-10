@@ -181,10 +181,16 @@
 $(document).ready(function() {
 
     
-    // 페이지 로딩 시 첫 번째 메뉴(active 상태)의 내용 표시
-    const $firstActiveMenu = $('.detail_search_section aside nav ul > li.active');
-    if ($firstActiveMenu.length > 0) {
-        const firstMenuTitle = $firstActiveMenu.find('button').text().trim();
+    // 페이지 로딩 시 화면 크기에 따라 첫 번째 메뉴 설정 및 내용 표시
+    function initializeFirstMenu() {
+        // 모든 li에서 active 클래스 제거
+        $('.detail_search_section aside nav ul > li').removeClass('active');
+        
+        // 첫 번째 li(국가행정조직)에 active 클래스 추가
+        const $firstLi = $('.detail_search_section aside nav ul > li:first-child');
+        $firstLi.addClass('active');
+        
+        const firstMenuTitle = $firstLi.find('button').text().trim();
         const firstMenuData = menuData[firstMenuTitle];
         
         if (firstMenuData) {
@@ -196,6 +202,18 @@ $(document).ready(function() {
             }
         }
     }
+    
+    // 초기 로딩
+    initializeFirstMenu();
+    
+    // 화면 크기 변경 시 모바일 진입 시 active 상태 재설정
+    $(window).on('resize', function() {
+        if (window.innerWidth < 768) {
+            // 모바일로 진입 시 첫 번째 메뉴(국가행정조직) active 상태로 설정
+            $('.detail_search_section aside nav ul > li').removeClass('active');
+            $('.detail_search_section aside nav ul > li:first-child').addClass('active');
+        }
+    });
     
     // 1depth 버튼 클릭 이벤트
     $('.detail_search_section aside nav ul > li > button').on('click', function(e) {
