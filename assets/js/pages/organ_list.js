@@ -1,10 +1,33 @@
 $(document).ready(function() {
-    
     // 메뉴 데이터 정의
     const menuData = {
         '국가행정조직': [
-            { name: '중앙행정기관', link: '#central-admin' },
-            { name: '보조기관', link: '#support-org' },
+            { name: '중앙행정기관', link: '#central-admin', children: 
+                {
+                    '부': {},
+                    '처': {},
+                    '청': {},
+                    '외국': {},
+                    '원': {},
+                    '위원회': {},
+                    '대통령직속(위원회)': {},
+                    '대통령직속(기타)': {},
+                    '국무총리직속(위원회)': {},
+                    '국무총리직속(기타)': {}
+                }
+             },
+            { name: '보조기관', link: '#support-org', children: 
+                {
+                    '부': {},
+                    '처': {},
+                    '청': {},
+                    '외국': {},
+                    '원': {},
+                    '위원회': {},
+                    '대통령직속(위원회)': {},
+                    '대통령직속(기타)': {}
+                }
+             },
             { name: '보좌기관', link: '#assistant-org' },
             { name: '합의제행정기관', link: '#collegial-admin' },
             { name: '부속기관', link: '#affiliated-org' },
