@@ -486,6 +486,12 @@
         width: 50%;
     }
 
+    .detail_search_section .organ_submenu_list > p{
+        padding: 1.6rem;
+        font-size: var(--font-size15);
+        color: var(--color-subText1);
+    }
+
     .detail_search_section ul.mobile_submenu_list {
         width: 100%;
         padding: 0 2.4rem;
@@ -671,7 +677,7 @@
     }
 
     .detail_search_section .organ_list_section .mobile_detail_header {
-        display: none;
+        display: flex;
         margin-bottom: 0;
         column-gap: 0;
     }
