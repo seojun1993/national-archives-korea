@@ -354,7 +354,11 @@ $(document).ready(function() {
             listHtml = '<ul class="mobile_submenu_list">';
             
             menuItems.forEach(function(item) {
-                listHtml += `<li><a href="${item.link}">${item.name}</a></li>`;
+                listHtml += `<li>
+                    <button type="button" class="mobile_submenu_btn" aria-expanded="false" aria-controls="mobile_submenu_content" onclick="appendContent('${item.name}')">
+                        ${item.name}
+                    </button>
+                </li>`;
             });
             
             listHtml += '</ul>';
@@ -365,5 +369,202 @@ $(document).ready(function() {
         // 우측 모바일 영역에 표시 (타이틀 제외하고 리스트만)
         $rightContentMobile.html(listHtml);
     }
-    
 });
+
+const appendContent = (title) => {
+    $('.organ_layout_container').hide();
+    $('.organ_list_section.mobile').show();
+
+    const targetDiv = $('.organ_list_body_content');
+
+    targetDiv.html(`
+        <div class="organ_list_content_wrap">
+            <div class="publication_body" role="rowgroup">
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>연감</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 수행한 업무와 관련하여, 한 해 동안 일어난 경과, 사건, 통계 등을 수록·발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>연감 연차보고서</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>백서</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>정부 정책이나 업무 수행에 대한 현상을 분석하고, 미래를 전망하여 그 내용을 국민에게 알리기 위해 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>백서 총람</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>통계집</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 소관 업무 분야의 통계·결산·전망 등을 대외발표 또는 대외 보고를 위해 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>총조사 통계연보 통계지표</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>업무안내 질의서</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 소관 업무와 관련하여 일반 국민이 해당 업무를 이해하고 활용할 수 있도록 업무 내용, 절차 및 질의 등 주요 사항을 간추려 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>업무안내서, 업무질의</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>사업보고서</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관에서 사업수행 과정 또는 업무수행 결과 및 성과 등을 정리하여 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>업무계획 사업계획 심사보고 평가보고서</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>연구조사보고서</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관에서 수행한 연구 및 조사 결과를 체계적으로 정리하여 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>연구보고서 조사보고서 용역보고서</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>법규집</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 법령(법률, 명령, 조례, 규칙 등)과 관련한 내용을 바탕으로 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>법령집 법규집 판례집</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>회의자료</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 회의 목적 또는 회의의 진행 과정 및 내용 등을 바탕으로 발간한 간행물(중요수집) 외국 정부기관 또는 국제기구와의 교류·협력, 협상, 교류활동 내용, 국회와 중앙행정기관 간 또는 지방의회와 지방자치단체 간 주고받은 공식 내용 등</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>회의록 회의보고서 의정보고서 세미나 공청회 심포지엄 포럼</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>연설 강연집</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 연설이나 강연 원고를 모아 발간한 간행물(중요수집) 장·차관급 중앙행정기관장 또는 광역자치단체장의 공식적인 연설문, 기고문, 인터뷰 자료 및 해당 기관의 공식적인 브리핑 등</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>연설문집 취임사 어록 담화문</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>사료집</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 연구 목적으로 문헌이나 기록, 문서 등을 편집하여 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>사료집 사료총서</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>연혁집</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관의 연혁 및 사건 등을 규명하고 변천 과정을 기술하여 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>연혁집 조직변천사</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>목록류</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 특정 주제, 분야 등과 관련한 기록, 문헌, 문서의 목록을 정리하여 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>회의안건목록집 분류집</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>전시 도감 화보집</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 그림, 사진 등을 모아 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>도감 도록</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>업무편람</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 소관 업무와 관련하여 업무 담당자가 해당 업무를 이해하고 활용할 수 있도록 업무 내용, 절차 등의 주요 사항을 간추려 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>정보공개업무편람</span>
+                    </div>
+                </div>
+
+                <div class="publication_item" role="row">
+                    <div class="item_type" role="cell" aria-colindex="1">
+                        <span>기관지</span>
+                    </div>
+                    <div class="item_content" role="cell" aria-colindex="2">
+                        <p>공공기관이 기관의 동향, 행사, 소식 등을 알리기 위해 발간한 간행물</p>
+                    </div>
+                    <div class="item_example" role="cell" aria-colindex="3">
+                        <span>월간지 주간지 소식지</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
+}
+
+const backBtnClick = () => {
+    $('.organ_layout_container').show();
+    $('.organ_list_section.mobile').hide();
+}

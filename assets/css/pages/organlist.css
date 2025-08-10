@@ -490,10 +490,13 @@
         line-height: 48px;
     }
 
-    .detail_search_section ul.mobile_submenu_list li a {
+    .detail_search_section ul.mobile_submenu_list li button {
         display: block;
+        width: 100%;
+        height: 100%;
         padding: 0 1rem;
         font-size: var(--font-size15);
+        font-weight: var(--font-weight-medium);
         color: var(--color-subText1);
         border-bottom: 1px solid #E0E0E0;
         overflow: hidden;
