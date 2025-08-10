@@ -270,29 +270,9 @@
     width: 100%;
 }
 
+/* 모든 organ_list_content_wrap에 동일한 스타일 적용 */
 .detail_search_section .organ_list_content_wrap:not(:first-child) {
     margin-top: 4.8rem;
-}
-
-.detail_search_section .organ_list_content_wrap:not(:first-child) ul {
-    width: 100%;
-}
-
-.detail_search_section .organ_list_content_wrap:not(:first-child) ul li {
-    width: calc(25% - 2rem);
-}
-
-.detail_search_section .organ_list_content_wrap:not(:first-child) ul li .organ_list {
-    border-top: 1px solid #111111;
-}
-
-.detail_search_section .organ_list_content_wrap:not(:first-child) ul li .organ_list li {
-    width: 100%;
-    background-color: #fafafa;
-}
-
-.detail_search_section .organ_list_content_wrap:not(:first-child) ul li .organ_list li:first-child {
-    border-top: none;
 }
 
 /* 기관 목록 컨텐츠 */
@@ -300,6 +280,22 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+}
+
+.detail_search_section .organ_list_content > li{
+    width: 100%;
+}
+
+/* 국가행정조직의 특정 아이템들 (대통령자문위원회, 한시기구, 제외기구) 한줄 배치 */
+.detail_search_section .organ_list_content_wrap.inline-items .organ_list_content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.detail_search_section .organ_list_content_wrap.inline-items .organ_list_content > li {
+    flex: 1;
+    width: auto;
 }
 
 .detail_search_section .organ_list_content > li .item {
@@ -700,29 +696,9 @@
         width: 100%;
     }
     
+    /* 모바일에서도 모든 organ_list_content_wrap에 동일한 스타일 적용 */
     .detail_search_section .organ_list_content_wrap:not(:first-child) {
         margin-top: 4.8rem;
-    }
-    
-    .detail_search_section .organ_list_content_wrap:not(:first-child) ul {
-        width: 100%;
-    }
-    
-    .detail_search_section .organ_list_content_wrap:not(:first-child) ul li {
-        width: calc(25% - 2rem);
-    }
-    
-    .detail_search_section .organ_list_content_wrap:not(:first-child) ul li .organ_list {
-        border-top: 1px solid #111111;
-    }
-    
-    .detail_search_section .organ_list_content_wrap:not(:first-child) ul li .organ_list li {
-        width: 100%;
-        background-color: #fafafa;
-    }
-    
-    .detail_search_section .organ_list_content_wrap:not(:first-child) ul li .organ_list li:first-child {
-        border-top: none;
     }
     
     /* 기관 목록 컨텐츠 */

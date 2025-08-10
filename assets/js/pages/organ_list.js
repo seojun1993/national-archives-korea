@@ -286,55 +286,122 @@ $(document).ready(function() {
             return;
         }
         
-        let contentHtml = `
-            <div class="organ_list_content_wrap">
-                <ul class="organ_list_content">`;
+        let contentHtml = '';
         
-        // 모든 2depth 아이템들을 평면적으로 나열
-        menuItems.forEach(function(item) {
+        // children가 있는 아이템과 없는 아이템 분리
+        const itemsWithChildren = menuItems.filter(item => item.children);
+        const itemsWithoutChildren = menuItems.filter(item => !item.children);
+        
+        // 디버깅용 로그 제거
+        
+        // children가 있는 아이템들 처리 - 각각 별도의 organ_list_content_wrap
+        itemsWithChildren.forEach(function(item) {
             contentHtml += `
+                <div class="organ_list_content_wrap">
+                    <ul class="organ_list_content">
                         <li>
                             <div class="item">
-                                <h4>${item.name}</h4>`;
+                                <h4>${item.name}</h4>
+                                <ul class="organ_list">`;
             
-            if (item.children) {
-                contentHtml += '<ul class="organ_list">';
+            // 각 카테고리별로 기관들 나열 (빈 배열이라도 strong 태그는 표시)
+            Object.keys(item.children).forEach(function(category) {
+                const organs = item.children[category];
+                contentHtml += `
+                                <li>
+                                    <strong>${category}</strong>
+                                    <ul>`;
                 
-                // 각 카테고리별로 기관들 나열
-                Object.keys(item.children).forEach(function(category) {
-                    const organs = item.children[category];
-                    if (organs.length > 0) {
-                        contentHtml += `
-                                    <li>
-                                        <strong>${category}</strong>
-                                        <ul>`;
-                        
-                        organs.forEach(function(organ) {
+                if (organs.length > 0) {
+                    organs.forEach(function(organ) {
+                        // 기관명에서 개수 분리
+                        const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
+                        if (match) {
+                            const orgName = match[1];
+                            const orgCount = match[2];
                             contentHtml += `
-                                            <li>
-                                                <a href="#;">
-                                                    <span class="org_name">${organ}</span>
-                                                </a>
-                                            </li>`;
-                        });
-                        
-                        contentHtml += `
-                                        </ul>
-                                    </li>`;
-                    }
-                });
+                                        <li>
+                                            <a href="#;">
+                                                <span class="org_name">${orgName}</span>
+                                                <span class="org_cnt">(${orgCount})</span>
+                                            </a>
+                                        </li>`;
+                        } else {
+                            contentHtml += `
+                                        <li>
+                                            <a href="#;">
+                                                <span class="org_name">${organ}</span>
+                                                <span class="org_cnt">(0)</span>
+                                            </a>
+                                        </li>`;
+                        }
+                    });
+                }
                 
-                contentHtml += '</ul>';
-            }
+                contentHtml += `
+                                    </ul>
+                                </li>`;
+            });
             
             contentHtml += `
+                                </ul>
                             </div>
-                        </li>`;
-        });
-        
-        contentHtml += `
+                        </li>
                     </ul>
                 </div>`;
+        });
+        
+        // children가 없는 아이템들 처리 - 국가행정조직의 특정 아이템들만 한줄 배치
+        if (itemsWithoutChildren.length > 0) {
+            // 국가행정조직의 특정 아이템들 (대통령자문위원회, 한시기구, 제외기구)
+            const specialItems = ['대통령자문위원회', '한시기구', '제외기구'];
+            const currentCategorySpecialItems = itemsWithoutChildren.filter(item => 
+                title === '국가행정조직' && specialItems.includes(item.name)
+            );
+            const normalItems = itemsWithoutChildren.filter(item => 
+                !(title === '국가행정조직' && specialItems.includes(item.name))
+            );
+            
+            // 국가행정조직의 특정 아이템들을 한줄로 배치
+            if (currentCategorySpecialItems.length > 0) {
+                contentHtml += `
+                    <div class="organ_list_content_wrap inline-items">
+                        <ul class="organ_list_content">`;
+                
+                currentCategorySpecialItems.forEach(function(item) {
+                    contentHtml += `
+                            <li>
+                                <div class="item">
+                                    <h4>${item.name}</h4>
+                                    <ul class="organ_list">
+                                        <!-- children가 없으므로 빈 리스트 -->
+                                    </ul>
+                                </div>
+                            </li>`;
+                });
+                
+                contentHtml += `
+                        </ul>
+                    </div>`;
+            }
+            
+            // 나머지 일반 아이템들은 개별 블록으로
+            normalItems.forEach(function(item) {
+                contentHtml += `
+                    <div class="organ_list_content_wrap">
+                        <ul class="organ_list_content">
+                            <li>
+                                <div class="item">
+                                    <h4>${item.name}</h4>
+                                    <ul class="organ_list">
+                                        <!-- children가 없으므로 빈 리스트 -->
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>`;
+            });
+        }
         
         $pcSection.html(contentHtml);
         $pcSectionTitle.text(title);
