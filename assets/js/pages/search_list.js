@@ -91,3 +91,61 @@ const listInfoClick = (e) => {
         }
     }
 }
+
+const openTypeDetail = () => {
+    document.body.style.overflow = 'hidden';
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false'); // 접근성 보완
+  }
+  
+  const closeTypeDetail = () => {
+    document.body.style.overflow = 'auto';
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true'); // 접근성 보완
+  }
+
+  // 모바일에서 간행물 유형 토글 기능
+$(document).ready(function() {
+    // 모바일에서만 토글 기능 활성화
+    if (window.innerWidth < 1024) {
+        initPublicationToggle();
+    }
+    
+    // 화면 크기 변경 시 토글 기능 재설정
+    $(window).on('resize', function() {
+        if (window.innerWidth < 1024) {
+            initPublicationToggle();
+        } else {
+            // PC에서는 토글 기능 비활성화
+            $('.publication_item').off('click');
+            $('.publication_item .item_content, .publication_item .item_example').show();
+        }
+    });
+    
+    function initPublicationToggle() {
+        // 초기 상태: item_content와 item_example 숨기기
+        $('.publication_item .item_content, .publication_item .item_example').hide();
+        
+        // item_type 클릭 시 토글
+        $('.publication_item').off('click').on('click', function() {
+            const $item = $(this);
+            const $content = $item.find('.publication_item .item_content, .item_example');
+            const isExpanded = $item.hasClass('expanded');
+            
+            // 다른 아이템들 닫기
+            $('.publication_item').not($item).removeClass('expanded');
+            $('.publication_item').not($item).find('.publication_item .item_content, .item_example').hide();
+            
+            // 현재 아이템 토글
+            if (isExpanded) {
+                $item.removeClass('expanded');
+                $content.hide();
+            } else {
+                $item.addClass('expanded');
+                $content.show();
+            }
+        });
+    }
+});

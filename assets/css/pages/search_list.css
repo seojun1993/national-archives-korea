@@ -92,14 +92,29 @@
 
 /* 사이드바 */
 .detail_search_section .search_result_section aside {
-    border-top: 1px solid #E0E0E0;
     width: 210px;
     height: 100%;
     position: sticky;
     top: 0;
 }
 
+.detail_search_section .search_result_section aside > a,
+.detail_search_section .search_result_section aside > button{
+    display: flex;
+    align-items: center;
+    column-gap: 0.8rem;
+    height: 56px;
+    font-size: var(--font-size15);
+    font-weight: var(--font-weight-medium);
+}
+
+.detail_search_section .search_result_section aside > a > span,
+.detail_search_section .search_result_section aside > button > span{
+    vertical-align: middle;
+}
+
 .detail_search_section .search_result_section aside nav {
+    border-top: 1px solid #111;
     width: 210px;
     margin-bottom: 2.4rem;
 }
@@ -194,7 +209,7 @@
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.2s ease;
-    background-image: url(../../images/arrow_up.svg);
+    background-image: url(../../../images/arrow_up.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
