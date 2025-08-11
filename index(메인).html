@@ -38,8 +38,7 @@
           <div class="container">
             <div class="header_logo">
               <h1>
-                <a href="/" aria-label="정부간행물 홈으로 이동">
-                  <img src="images/logo_w.svg" alt="정부간행물 로고">
+                <a href="index(메인).html" aria-label="정부간행물 홈으로 이동">
                   <span class="sr-only">정부간행물</span>
                 </a>
               </h1>
@@ -56,10 +55,10 @@
                 <button class="close_btn" aria-label="메인메뉴 닫기"></button>
               </div>
               <ul>
-                <li><a href="#" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
-                <li><a href="#" aria-label="상세검색 페이지로 이동">상세검색</a></li>
+                <li><a href="intro(간행물).html" aria-label="간행물 검색 페이지로 이동">간행물</a></li>
+                <li><a href="search(상세검색).html" aria-label="상세검색 페이지로 이동">상세검색</a></li>
                 <li class="has-submenu">
-                  <a href="#" aria-label="발행기관별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">발행기관별 검색</a>
+                  <a href="organList(발행기관별검색).html" aria-label="발행기관별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">발행기관별 검색</a>
                   <ul class="submenu" aria-label="발행기관별 하위 메뉴">
                     <li><a href="#">국가행정조직</a></li>
                     <li><a href="#">자치행정조직</a></li>
@@ -78,7 +77,7 @@
                   </ul>
                 </li>
                 <li class="has-submenu">
-                  <a href="#" aria-label="유형별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">유형별 검색</a>
+                  <a href="type_list(유형별 검색).html" aria-label="유형별 검색 페이지로 이동" aria-haspopup="true" aria-expanded="false">유형별 검색</a>
                   <ul class="submenu" aria-label="유형별 하위 메뉴">
                     <li><a href="#">연감·백서류</a></li>
                     <li><a href="#">통계집</a></li>
@@ -116,8 +115,7 @@
                               <input 
                                   type="text" 
                                   id="search-input"
-                                  name="q"
-                                  placeholder="검색어를 입력해주세요."
+                                  name="search"
                                   aria-describedby="search-description"
                                   required
                               >
@@ -169,7 +167,9 @@
               <p>Copyright(c) National Archives of Korea all rights reserved.</p>
             </address>
             <div class="footer_logo">
-              <img src="images/footer_logo.svg" alt="국가기록원 로고" width="131" height="44">
+              <a href="https://www.archives.go.kr/next/viewMainNew.do" target="_blank" rel="noopener noreferrer" aria-label="국가기록원 홈페이지 새창으로 열기">
+                <img src="images/footer_logo.svg" alt="국가기록원 로고" width="131" height="44">
+              </a>
             </div>
           </div>
         </footer>

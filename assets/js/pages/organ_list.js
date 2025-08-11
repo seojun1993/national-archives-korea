@@ -349,7 +349,21 @@ $(document).ready(function() {
         // children가 없는 아이템들 처리 - 국가행정조직의 특정 아이템들만 한줄 배치
         if (itemsWithoutChildren.length > 0) {
             // 국가행정조직의 특정 아이템들 (대통령자문위원회, 한시기구, 제외기구)
-            const specialItems = ['대통령자문위원회', '한시기구', '제외기구'];
+            // 여기에 이거 다 추가해
+            const specialItems = [
+                '대통령자문위원회',
+                '한시기구',
+                '제외기구',
+                '정부투자기관',
+                '정부출연단체',
+                '공적단체',
+                '보조단체',
+                '재투자단체',
+                '재출연단체',
+                '기금출연, 보조단체',
+                '행정사무대행단체체',
+                '기타체'
+            ];
             const currentCategorySpecialItems = itemsWithoutChildren.filter(item => 
                 title === '국가행정조직' && specialItems.includes(item.name)
             );

@@ -134,7 +134,7 @@ main{
     header .container .header_logo h1 a {
       width: 77px;
       height: 16px;
-      background-image: url(../../images/logo_w.svg);
+      background-image: url(../../../images/logo_w.svg);
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
@@ -170,7 +170,7 @@ main{
       font-size: 1.3rem;
     }
     .section_top .search_box .search button {
-      width: 80px;
+        width: max-content;
       height: 44px;
       line-height: 44px;
       border-radius: 8px;

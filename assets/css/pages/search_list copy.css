@@ -58,6 +58,7 @@
 }
 
 .detail_search_section .search_box_left button {
+    width: 100px;
     height: 46px;
     border-radius: 6px;
 }
@@ -317,7 +318,6 @@
 }
 
 .detail_search_section .item_content {
-    width: calc(100% - 100px - 16px - 3.2rem);
     display: flex;
     flex-direction: column;
 }
