@@ -301,8 +301,8 @@
 }
 
 .detail_search_section .organ_list_content_wrap.inline-items .organ_list_content > li {
-    flex: 1;
-    width: auto;
+    max-width: calc(25% - 2rem);
+    width: 100%;
 }
     
     .detail_search_section .organ_list_content > li .item {
@@ -428,7 +428,8 @@
         .detail_search_section .search_result_section aside { width: 50%; border: none; }
         .detail_search_section .search_result_section aside nav { width: 100%; margin-bottom: 0; }
         .detail_search_section .search_result_section aside nav ul li { height: auto;}
-        .detail_search_section .search_result_section aside nav ul li button {
+        .detail_search_section .search_result_section aside nav ul li > a, 
+        .detail_search_section .search_result_section aside nav ul li > button {
           background-color: #F2F3F5; color: var(--color-subText2); text-align: center;
         }
         .detail_search_section .search_result_section aside nav ul li.active { background-color: #F7F8FD; }

@@ -70,7 +70,15 @@
             ]}
         ],
         '자치행정조직': [
-            { name: '광역자치단체', link: '#metropolitan-gov' },
+            { name: '광역자치단체', link: '#metropolitan-gov', children: {
+                '서울특별시': [],
+                '부산광역시': [],
+                '대구광역시': [],
+                '인천광역시': [],
+                '광주광역시': [],
+                '대전광역시': [],
+                '울산광역시': [],
+            }},
             { name: '기초자치단체', link: '#basic-local-gov' },
             { name: '하부행정기구', link: '#sub-admin-org' },
             { name: '의회사무기구', link: '#assembly-secretariat' },
@@ -94,7 +102,7 @@
                 '과': []
             }}
         ],
-        '정부투자기관및기타': [
+        '정부투자기관 및 기타': [
             { name: '정부투자기관', link: '#gov-investment-org'},
             { name: '정부출연단체', link: '#gov-research-org'},
             { name: '공적단체', link: '#gov-research-org'},
@@ -346,128 +354,75 @@ $(document).ready(function() {
                 </div>`);
         });
         
-        // children가 없는 아이템들 처리 - 국가행정조직의 특정 아이템들만 한줄 배치
+        // children가 없는 아이템들 처리 - 모든 카테고리에서 한줄 배치
         if (itemsWithoutChildren.length > 0) {
-            // 국가행정조직의 특정 아이템들 (대통령자문위원회, 한시기구, 제외기구)
-            // 여기에 이거 다 추가해
-            const specialItems = [
-                '대통령자문위원회',
-                '한시기구',
-                '제외기구',
-                '정부투자기관',
-                '정부출연단체',
-                '공적단체',
-                '보조단체',
-                '재투자단체',
-                '재출연단체',
-                '기금출연, 보조단체',
-                '행정사무대행단체체',
-                '기타체'
-            ];
-            const currentCategorySpecialItems = itemsWithoutChildren.filter(item => 
-                title === '국가행정조직' && specialItems.includes(item.name)
-            );
-            const normalItems = itemsWithoutChildren.filter(item => 
-                !(title === '국가행정조직' && specialItems.includes(item.name))
-            );
+            // 모든 children가 없는 아이템들을 한줄로 배치
+            htmlParts.push(`
+                <div class="organ_list_content_wrap inline-items">
+                    <ul class="organ_list_content">`);
             
-            // 국가행정조직의 특정 아이템들을 한줄로 배치
-            if (currentCategorySpecialItems.length > 0) {
-                htmlParts.push(`
-                    <div class="organ_list_content_wrap inline-items">
-                        <ul class="organ_list_content">`);
-                
-                const specialItemsHtml = currentCategorySpecialItems.map(item => `
+            const specialItemsHtml = itemsWithoutChildren.map(item => {
+                let itemHtml = `
                             <li>
                                 <div class="item">
                                     <h4>${item.name}</h4>
-                                    <ul class="organ_list">
-                                        <!-- children가 없으므로 빈 리스트 -->
-                                    </ul>
-                                </div>
-                            </li>`);
+                                    <ul class="organ_list">`;
                 
-                htmlParts.push(...specialItemsHtml);
-                htmlParts.push(`
-                        </ul>
-                    </div>`);
-            }
-            
-            // 나머지 일반 아이템들은 개별 블록으로
-            normalItems.forEach(function(item) {
-                let appendHtml = '';
-                
-                appendHtml += `
-                    <div class="organ_list_content_wrap">
-                        <ul class="organ_list_content">
-                            <li>
-                                <div class="item">
-                                    <h4>${item.name}</h4>
-                                    <ul class="organ_list">
+                // organs가 있는 경우 기관 리스트 렌더링
+                if (item.organs && item.organs.length > 0) {
+                    itemHtml += `
                                         <li>
                                             <strong>${item.name}</strong>
                                             <ul>`;
-                
-                // title(item.name)과 매칭되는 실제 데이터 찾기
-                let organData = [];
-                
-                // menuData에서 현재 활성화된 1depth 메뉴 찾기
-                const activeMenuTitle = $('.detail_search_section aside nav ul > li.active button').text().trim();
-                const activeMenuData = menuData[activeMenuTitle];
-                
-                if (activeMenuData) {
-                    // item.name과 매칭되는 데이터 찾기
-                    const matchedItem = activeMenuData.find(menuItem => menuItem.name === item.name);
-                    if (matchedItem && matchedItem.organs) {
-                        organData = matchedItem.organs;
-                    }
-                }
-                
-                // 데이터가 없으면 더미 데이터 사용
-                if (organData.length === 0) {
-                    organData = [
-                        `${item.name} 샘플기관 1(100)`,
-                        `${item.name} 샘플기관 2(200)`,
-                        `${item.name} 샘플기관 3(300)`
-                    ];
-                }
-                
-                organData.forEach(function(organ) {
-                    // 기관명에서 개수 분리
-                    const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
-                    if (match) {
-                        const orgName = match[1];
-                        const orgCount = match[2];
-                        appendHtml += `
+                    
+                    item.organs.forEach(function(organ) {
+                        // 기관명에서 개수 분리
+                        const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
+                        if (match) {
+                            const orgName = match[1];
+                            const orgCount = match[2];
+                            itemHtml += `
                                                 <li>
                                                     <a href="#;">
                                                         <span class="org_name">${orgName}</span>
                                                         <span class="org_cnt">(${orgCount})</span>
                                                     </a>
                                                 </li>`;
-                    } else {
-                        appendHtml += `
+                        } else {
+                            itemHtml += `
                                                 <li>
                                                     <a href="#;">
                                                         <span class="org_name">${organ}</span>
                                                         <span class="org_cnt">(0)</span>
                                                     </a>
                                                 </li>`;
-                    }
-                });
-                
-                appendHtml += `
+                        }
+                    });
+                    
+                    itemHtml += `
                                             </ul>
-                                        </li>
+                                        </li>`;
+                } else {
+                    // organs가 없는 경우 빈 리스트
+                    itemHtml += `
+                                        <!-- children가 없으므로 빈 리스트 -->`;
+                }
+                
+                itemHtml += `
                                     </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>`;
+                            </li>`;
                 
-                htmlParts.push(appendHtml);
+                return itemHtml;
             });
+            
+            htmlParts.push(...specialItemsHtml);
+            htmlParts.push(`
+                        </ul>
+                    </div>`);
         }
+        
+
         
         $pcSection.html(htmlParts.join(''));
         $pcSectionTitle.text(title);
@@ -513,7 +468,7 @@ const appendContent = (title) => {
     // 2뎁스로 넘어가면 search_result_info 숨기기
     $('.search_result_info').hide();
 
-    let listHtml = '';  // let으로 변경
+    let listHtml = '';
     const targetDiv = $('.organ_list_body_content');
     
     // organ-list-title에 클릭한 타이틀 설정
@@ -531,46 +486,8 @@ const appendContent = (title) => {
                             <div class="item">
                                 <ul class="organ_list">`;
             
-            // organs 배열이 있으면 반복문으로 처리 (children가 없는 경우)
-            if(targetData[i].organs && targetData[i].organs.length > 0) {
-                listHtml += `
-                                    <li>
-                                        <strong role="button" 
-                                                tabindex="0" 
-                                                aria-label="${targetData[i].name} 하위 메뉴 토글" 
-                                                aria-expanded="false" 
-                                                aria-controls="mobile-organ-info-${i}">${targetData[i].name}</strong>
-                                        <ul class="organ_info_list" id="mobile-organ-info-${i}">`;
-                targetData[i].organs.forEach(function(organ) {
-                    // 기관명에서 개수 분리
-                    const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
-                    if (match) {
-                        const orgName = match[1];
-                        const orgCount = match[2];
-                        listHtml += `
-                                            <li>
-                                                <a href="#" aria-label="${orgName} 기관 상세보기">
-                                                    <span class="org_name">${orgName}</span>
-                                                    <span class="org_cnt" aria-label="기관 수">(${orgCount})</span>
-                                                </a>
-                                            </li>`;
-                    } else {
-                        listHtml += `
-                                            <li>
-                                                <a href="#;">
-                                                    <span class="org_name">${organ}</span>
-                                                    <span class="org_cnt">(0)</span>
-                                                </a>
-                                            </li>`;
-                    }
-                });
-                
-                listHtml += `
-                                        </ul>
-                                    </li>`;
-            }
-            // children 객체가 있으면 카테고리별로 처리 (중앙행정기관, 보조기관 등)
-            else if(targetData[i].children) {
+            // 1. children이 있는 경우: 카테고리별 토글 구조 (중앙행정기관, 보조기관 등)
+            if(targetData[i].children && Object.keys(targetData[i].children).length > 0) {
                 Object.keys(targetData[i].children).forEach(function(category, categoryIndex) {
                     const organs = targetData[i].children[category];
                     const uniqueId = `mobile-organ-${i}-${categoryIndex}-${category.replace(/\s+/g, '-')}`;
@@ -614,6 +531,55 @@ const appendContent = (title) => {
                                                 </ul>
                                             </li>`;
                 });
+            }
+            // 2. organs가 있는 경우: 기관 리스트 구조 (대통령자문위원회, 한시기구, 제외기구 등)
+            else if(targetData[i].organs && targetData[i].organs.length > 0) {
+                listHtml += `
+                                    <li>
+                                        <strong role="button" 
+                                                tabindex="0" 
+                                                aria-label="${targetData[i].name} 하위 메뉴 토글" 
+                                                aria-expanded="false" 
+                                                aria-controls="mobile-organ-info-${i}">${targetData[i].name}</strong>
+                                        <ul class="organ_info_list" id="mobile-organ-info-${i}">`;
+                
+                targetData[i].organs.forEach(function(organ) {
+                    // 기관명에서 개수 분리
+                    const match = organ.match(/^(.+)\((\d+(?:,\d+)*)\)$/);
+                    if (match) {
+                        const orgName = match[1];
+                        const orgCount = match[2];
+                        listHtml += `
+                                            <li>
+                                                <a href="#" aria-label="${orgName} 기관 상세보기">
+                                                    <span class="org_name">${orgName}</span>
+                                                    <span class="org_cnt" aria-label="기관 수">(${orgCount})</span>
+                                                </a>
+                                            </li>`;
+                    } else {
+                        listHtml += `
+                                            <li>
+                                                <a href="#;">
+                                                    <span class="org_name">${organ}</span>
+                                                    <span class="org_cnt">(0)</span>
+                                                </a>
+                                            </li>`;
+                    }
+                });
+                
+                listHtml += `
+                                        </ul>
+                                    </li>`;
+            }
+            // 3. 둘 다 없는 경우: 빈 구조 (정부투자기관, 정부출연단체 등)
+            else {
+                listHtml += `
+                                    <li>
+                                        <strong>${targetData[i].name}</strong>
+                                        <ul>
+                                            <li class="no-data">하위 기관이 없습니다.</li>
+                                        </ul>
+                                    </li>`;
             }
             
             listHtml += `
