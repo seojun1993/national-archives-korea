@@ -131,14 +131,10 @@ $(document).ready(function() {
         // item_type 클릭 시 토글
         $('.publication_item').off('click').on('click', function() {
             const $item = $(this);
-            const $content = $item.find('.publication_item .item_content, .item_example');
+            const $content = $item.find('.item_content, .item_example');
             const isExpanded = $item.hasClass('expanded');
             
-            // 다른 아이템들 닫기
-            $('.publication_item').not($item).removeClass('expanded');
-            $('.publication_item').not($item).find('.publication_item .item_content, .item_example').hide();
-            
-            // 현재 아이템 토글
+            // 현재 아이템만 토글 (다른 아이템들은 건드리지 않음)
             if (isExpanded) {
                 $item.removeClass('expanded');
                 $content.hide();
