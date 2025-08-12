@@ -351,7 +351,7 @@
     /* 발행기관 검색 */
     .detail_search_section .publication_search { height: 38px; }
     .detail_search_section .publication_search input { width: calc(100% - 130px - 0.8rem); }
-    .detail_search_section .publication_search button { width: max-content; height: 38px; }
+    .detail_search_section .publication_search button { min-width:max-content; height: 38px; }
   
     /* 연도 검색 */
     .detail_search_section .year_search { flex-wrap: wrap; }

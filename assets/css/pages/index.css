@@ -170,7 +170,6 @@ main{
       font-size: 1.3rem;
     }
     .section_top .search_box .search button {
-        width: max-content;
       height: 44px;
       line-height: 44px;
       border-radius: 8px;

@@ -58,6 +58,7 @@
 }
 
 .detail_search_section .search_box_left button {
+    width: 100px;
     height: 46px;
     border-radius: 6px;
 }
