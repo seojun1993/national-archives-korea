@@ -7,6 +7,21 @@ body{
 main{
     width: 100%;
 }
+    
+header{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    background: none;
+    border-bottom: 1px solid #fff;
+    z-index: 100;
+}
+
+header .container .header_logo h1 a{
+    background-image: url(../../../images/logo_w.svg);
+}
+
+header .container nav ul li a{color: #fff;}
 
 .main_section {
     min-height: 690px;
@@ -150,6 +165,8 @@ main{
       display: block;
       margin-bottom: 6px;
     }
+
+    header .container nav ul li a{color: var(--color-text);}
   
     /* 메인 */
     .main_section { min-height: 465px; } /* 690 → 465 */

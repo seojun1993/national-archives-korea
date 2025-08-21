@@ -327,6 +327,10 @@
     overflow: hidden;
     }
 
+    .detail_search_section .organ_list_content > li .item .organ_list li.full {
+        width: 100%;
+        }
+
     .detail_search_section .organ_list_content > li .item .organ_list li strong {
         display: flex;
     justify-content: center;

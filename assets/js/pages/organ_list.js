@@ -382,7 +382,7 @@ $(document).ready(function() {
                 // organs가 있는 경우 기관 리스트 렌더링
                 if (item.organs && item.organs.length > 0) {
                     itemHtml += `
-                                        <li>
+                                        <li class="full">
                                             <strong>${item.name}</strong>
                                             <ul>`;
                     
