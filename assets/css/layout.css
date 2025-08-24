@@ -58,6 +58,38 @@ header .container nav ul li.has-submenu > a{
     position: relative;
 }
 
+.top_btn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1000;
+}
+
+.top_btn a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 70px;
+    height: 70px;
+    background-color:rgba(59,74,89,0.7);
+    border-radius: 14px;
+    gap: 4px;
+}
+
+.top_btn a span{
+    display: block;
+    text-align: center;
+    font-size: var(--font-size17);
+    color: #fff;
+}
+
+.top_btn a img{
+    width: 21px;
+    height: 21px;
+    margin: 0 auto;
+}
+
 @media screen and (min-width: 1024px) {
     header .container nav ul li.has-submenu:hover .submenu{
         opacity: 1;
@@ -692,5 +724,19 @@ footer .container .footer_logo img{
         padding: 1.2rem 1.6rem;
         text-align: left;
         border-top: 1px dashed #E0E0E0;
+    } 
+
+    .top_btn{
+        bottom: 32x;
+        right: 24px;
+    }
+
+    .top_btn a{
+        width: 48px;
+        height: 48px;
+    }
+    
+    .top_btn a span{
+        display: none;
     } 
 }

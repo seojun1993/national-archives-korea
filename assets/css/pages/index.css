@@ -45,32 +45,68 @@ header .container nav ul li a{color: #fff;}
     padding-bottom: 2.4rem;
 }
 
-.section_top .search_box{
-    margin-top: 4rem;
+.section_top .search_wrap{
+    margin-top: 6rem;
 }
-
-.section_top .search_box .search{
+.section_top .search_wrap .search{
     display:flex;
     justify-content: center;
     align-items:center;
-    column-gap: 1.6rem;
+    column-gap: 1.2rem;
 }
 
-.section_top .search_box .search input {
-    width: calc(100% - 110px - 1.6rem);
-    max-width: 640px;
+.section_top .search_wrap .search .search_box{
+    position: relative;
+    width: 100%;
+    max-width: 580px;
     height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border: 1px solid #dedede;
+    background-color: #fff;
     border-radius: 12px;
-    padding: 1.6rem 2rem;
+}
+
+.section_top .search_wrap .search .search_box .search_input{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.section_top .search_wrap .search .search_box input[type="text"] {
+    width: calc(100% - 60px);
+    height: 100%;
+    padding: 0 0.8rem;
     box-sizing: border-box;
     font-size: 1.6rem;
+    border: none;
 }
 
-.section_top .search_box .search button {
-    width: 110px;
+.section_top .search_wrap .search .search_box input[type="submit"]{
+    border: none;
+    background: none;
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background-image: url(../../../images/search.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 0;
+}
+
+.section_top .search_wrap .search a.btn {
+    width: 140px;
     height: 60px;
     line-height: 60px;
-    border-radius: 12px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: var(--font-weight-medium);
 }
 
 .link_section{
@@ -176,20 +212,28 @@ header .container nav ul li a{color: #fff;}
     /* .section_top .title_section { color 동일 → 생략 } */
     .section_top .title_section h2 { padding-bottom: 0; font-size: var(--font-size32); } /* 크기/패딩만 변경 */
     .section_top .title_section p { font-size: 1.5rem; }
-    .section_top .search_box { margin-top: 3.6rem; }
-    .section_top .search_box .search { column-gap: 1rem; } /* flex/정렬은 동일 → 간격만 */
-    .section_top .search_box .search input {
-      width: calc(100% - 80px - 1rem);
-      max-width: 320px;
-      height: 44px;
-      border-radius: 8px;
-      padding: 1.2rem 1.6rem;
+    .section_top .search_wrap { margin-top: 3.6rem; }
+    .section_top .search_wrap .search .search_box{width: calc(100% - 9.2rem); height: 44px; border-radius: 4px; overflow: hidden;}
+    .section_top .search_wrap .search .search_box input[type="text"] {
+      width: 100%;
+      height: 100%;
+      padding: 0 1.6rem;
       font-size: 1.3rem;
     }
-    .section_top .search_box .search button {
-      height: 44px;
-      line-height: 44px;
-      border-radius: 8px;
+    .section_top .search_wrap .search .search_box input[type="submit"]{
+        width: 44px;
+        height: 44px;
+    }
+    .section_top .search_wrap .search a.btn {
+        margin-left: auto;
+        width: auto;
+        min-width: 80px;
+        padding: 8px 0;
+        width: max-content;
+        height: 44px;
+        line-height: 44px;
+        border-radius: 6px;
+        margin: 0;
     }
   
     /* 링크 섹션 */
@@ -207,3 +251,4 @@ header .container nav ul li a{color: #fff;}
     .link_section .section_bottom .main_link ul .nanet a img { height: 19px; }
     .link_section .section_bottom .main_link ul .scienceon a img { height: 12px; }
   }
+  

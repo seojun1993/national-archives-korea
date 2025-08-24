@@ -108,19 +108,18 @@
                       <h2 id="main-title">정부간행물</h2>
                       <p>국가, 지방자치단체 및<br class="mobile_br"/> 공공기관의 간행물을 검색해보세요.</p>
                   </div>
-                  <div class="search_box" role="search">
-                      <form id="search-form" action="#" method="get">
-                          <div class="search">
+                  <div class="search_wrap" role="search">
+                      <form id="search-form" action="#" method="get"> 
+                        <div class="search">
+                          <div class="search_box">
+                            <div class="search_input">
                               <label for="search-input" class="sr-only">검색어 입력</label>
-                              <input 
-                                  type="text" 
-                                  id="search-input"
-                                  name="search"
-                                  aria-describedby="search-description"
-                                  required
-                              >
-                              <button class="btn purple" type="submit" aria-label="정부간행물 검색 실행">상세 검색</button>
+                              <input type="text" id="search-input" name="search" aria-describedby="search-description">
+                              <input type="submit" class="btn" value="검색"aria-label="정부간행물 검색 실행">
+                            </div>
                           </div>
+                          <a href="search(상세검색).html" class="btn purple" aria-label="상세 검색 실행">상세 검색</a>
+                        </div>
                       </form>
                       <p id="search-description" class="sr-only">정부간행물을 검색할 수 있습니다. 검색어를 입력하고 검색 버튼을 누르거나 엔터키를 누르세요.</p>
                   </div>

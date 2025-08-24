@@ -235,6 +235,7 @@ select:focus,
 textarea:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  z-index: 1000;
 }
 
 .pc{
@@ -269,10 +270,13 @@ textarea:focus {
   align-items: center;
   column-gap: 1.6rem;
   margin-top: 3rem;
-  button{
-    width: 100%;
-    max-width: 120px;
-  }
+
+}
+
+.btn_section a
+.btn_section button{
+  width: 100%;
+  max-width: 120px;
 }
 
 @media screen and (max-width: 1024px) {
