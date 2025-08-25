@@ -103,10 +103,11 @@ header .container nav ul li a{color: #fff;}
     width: 140px;
     height: 60px;
     line-height: 60px;
-    border-radius: 4px;
+    border-radius: 12px;
     color: #fff;
     font-size: 1.6rem;
     font-weight: var(--font-weight-medium);
+    background-color: var(--color-primary);
 }
 
 .link_section{

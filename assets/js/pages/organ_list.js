@@ -203,10 +203,10 @@ $(document).ready(function() {
     // 페이지 로딩 시 화면 크기에 따라 첫 번째 메뉴 설정 및 내용 표시
     function initializeFirstMenu() {
         // 모든 li에서 active 클래스 제거
-        $('.detail_search_section aside nav ul > li').removeClass('active');
+        $('.detail_search_section .filter-section nav ul > li').removeClass('active');
         
         // 첫 번째 li(국가행정조직)에 active 클래스 추가
-        const $firstLi = $('.detail_search_section aside nav ul > li:first-child');
+        const $firstLi = $('.detail_search_section .filter-section nav ul > li:first-child');
         $firstLi.addClass('active');
         
         const firstMenuTitle = $firstLi.find('button').text().trim();
@@ -229,13 +229,13 @@ $(document).ready(function() {
     $(window).on('resize', function() {
         if (window.innerWidth < 1024) {
             // 모바일로 진입 시 첫 번째 메뉴(국가행정조직) active 상태로 설정
-            $('.detail_search_section aside nav ul > li').removeClass('active');
-            $('.detail_search_section aside nav ul > li:first-child').addClass('active');
+            $('.detail_search_section .filter-section nav ul > li').removeClass('active');
+            $('.detail_search_section .filter-section nav ul > li:first-child').addClass('active');
         }
     });
     
     // 1depth 버튼 클릭 이벤트
-    $('.detail_search_section aside nav ul > li > button').on('click', function(e) {
+    $('.detail_search_section .filter-section nav ul > li > button').on('click', function(e) {
         e.preventDefault();
         
         const $clickedLi = $(this).closest('li');
@@ -485,7 +485,7 @@ const appendContent = (title) => {
     // organ-list-title에 클릭한 타이틀 설정
     $('#organ-list-title').text(title);
 
-    const activeMenuTitle = $('.detail_search_section aside nav ul > li.active button').text().trim();
+    const activeMenuTitle = $('.detail_search_section .filter-section nav ul > li.active button').text().trim();
     const targetData = menuData[activeMenuTitle];
 
     for(let i = 0; i < targetData.length; i++) {

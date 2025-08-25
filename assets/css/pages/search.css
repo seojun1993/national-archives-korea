@@ -307,6 +307,12 @@
 
 /* 모바일 반응형 */
 @media screen and (max-width: 1024px) {
+    .modal.organ_search_modal .modal_content{
+        padding: 0.8em;
+        height: auto;
+    }
+
+    
     /* 테이블 → 모바일형 */
     .detail_search_section .detail_search_table { border-top: none; }
     .detail_search_section .detail_search_table input[type="text"]::placeholder{

@@ -623,6 +623,7 @@ footer .container .footer_logo img{
     .modal .modal_content{
         border-radius: 6px;
         padding: 1.8rem;
+        max-height: 90%;
     }
     
     .modal .modal_content .modal_header{
@@ -635,7 +636,7 @@ footer .container .footer_logo img{
     
     .modal .modal_content .modal_body{
         height: 100%;
-        max-height: 545px;
+        max-height: 450px;
         overflow-x: hidden;
         overflow-y: auto;
     }

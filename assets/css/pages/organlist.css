@@ -92,31 +92,31 @@
 }
 
 /* 사이드바 */
-.detail_search_section .search_result_section aside {
+.detail_search_section .search_result_section .filter-section {
     width: 210px;
     height: 100%;
 }
 
-.detail_search_section .search_result_section aside nav {
+.detail_search_section .search_result_section .filter-section nav {
     border-top: 1px solid #111;
     width: 210px;
     margin-bottom: 2.4rem;
 }
 
-.detail_search_section .search_result_section aside nav h3 {
+.detail_search_section .search_result_section .filter-section nav h3 {
     font-size: var(--font-size16);
     font-weight: var(--font-weight-bold);
     margin-bottom: 1.6rem;
     color: var(--color-text);
 }
 
-.detail_search_section .search_result_section aside nav ul li {
+.detail_search_section .search_result_section .filter-section nav ul li {
     width: 100%;
     height: 52px;
 }
 
-.detail_search_section .search_result_section aside nav ul li > a,
-.detail_search_section .search_result_section aside nav ul li > button {
+.detail_search_section .search_result_section .filter-section nav ul li > a,
+.detail_search_section .search_result_section .filter-section nav ul li > button {
     padding: 1.4rem 1.6rem;
     display: block;
     width: 100%;
@@ -128,36 +128,36 @@
     line-height: 1.4;
 }
 
-.detail_search_section .search_result_section aside nav ul li a .count {
+.detail_search_section .search_result_section .filter-section nav ul li a .count {
     color: #666;
 }
 
-.detail_search_section .search_result_section aside nav ul li.active {
+.detail_search_section .search_result_section .filter-section nav ul li.active {
     background-color: #F7F8FD;
 }
 
-.detail_search_section .search_result_section aside nav ul li.active button {
+.detail_search_section .search_result_section .filter-section nav ul li.active button {
     color: var(--color-primary);
     font-weight: var(--font-weight-medium);
 }
 
-.detail_search_section .search_result_section aside nav ul li + li {
+.detail_search_section .search_result_section .filter-section nav ul li + li {
     border-top: 1px solid #E0E0E0;
 }
 
 /* 필터 섹션 */
-.detail_search_section .search_result_section aside section {
+.detail_search_section .search_result_section .filter-section section {
     margin-bottom: 2.4rem;
 }
 
-.detail_search_section .search_result_section aside section h3 {
+.detail_search_section .search_result_section .filter-section section h3 {
     font-size: var(--font-size16);
     font-weight: var(--font-weight-bold);
     margin-bottom: 1.6rem;
     color: var(--color-text);
 }
 
-.detail_search_section .search_result_section aside section ul li:last-child {
+.detail_search_section .search_result_section .filter-section section ul li:last-child {
     margin-bottom: 0;
 }
 
@@ -428,22 +428,22 @@
         }
       
         /* 사이드바(모바일 탭 리스트처럼) */
-        .detail_search_section .search_result_section aside { width: 50%; border: none; }
-        .detail_search_section .search_result_section aside nav { width: 100%; margin-bottom: 0; }
-        .detail_search_section .search_result_section aside nav ul li { height: auto;}
-        .detail_search_section .search_result_section aside nav ul li > a, 
-        .detail_search_section .search_result_section aside nav ul li > button {
+        .detail_search_section .search_result_section .filter-section { width: 50%; border: none; }
+        .detail_search_section .search_result_section .filter-section nav { width: 100%; margin-bottom: 0; }
+        .detail_search_section .search_result_section .filter-section nav ul li { height: auto;}
+        .detail_search_section .search_result_section .filter-section nav ul li > a, 
+        .detail_search_section .search_result_section .filter-section nav ul li > button {
           background-color: #F2F3F5; color: var(--color-subText2); text-align: center;
         }
-        .detail_search_section .search_result_section aside nav ul li.active { background-color: #F7F8FD; }
-        .detail_search_section .search_result_section aside nav ul li.active button {
+        .detail_search_section .search_result_section .filter-section nav ul li.active { background-color: #F7F8FD; }
+        .detail_search_section .search_result_section .filter-section nav ul li.active button {
           position: relative; color: var(--color-primary); font-weight: var(--font-weight-bold); background-color: #fff;
         }
-        .detail_search_section .search_result_section aside nav ul li.active button::after {
+        .detail_search_section .search_result_section .filter-section nav ul li.active button::after {
           content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
           width: 5px; height: 100%; background-color: var(--color-primary);
         }
-        .detail_search_section .search_result_section aside nav ul li + li { border-top: none; }
+        .detail_search_section .search_result_section .filter-section nav ul li + li { border-top: none; }
       
         /* 기관 목록 섹션(기본 숨김: 탭 선택 시 노출 가정) */
         .detail_search_section .organ_list_section { display: none; }
